@@ -1,0 +1,515 @@
+@import "tailwindcss";
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * The Nursing Journey – Siva Naik design system.
+ * Palette extracted from the brand logo (deep space navy, neon ring blue,
+ * gold→orange gradient, white). All colors in oklch.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --font-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  /* Brand tokens */
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-navy-ink: var(--navy-ink);
+  --color-neon: var(--neon);
+  --color-neon-soft: var(--neon-soft);
+  --color-gold: var(--gold);
+  --color-ember: var(--ember);
+  --color-cross: var(--cross);
+  --color-studies: var(--studies);
+  --color-council: var(--council);
+  --color-career: var(--career);
+  --color-whatsapp: var(--whatsapp);
+}
+
+:root {
+  --radius: 0.9rem;
+
+  --navy-deep: oklch(0.1566 0.0438 266.78);
+  --navy: oklch(0.198 0.0592 267.74);
+  --navy-ink: oklch(0.2554 0.0891 263.6);
+  --neon: oklch(0.7083 0.1466 244.05);
+  --neon-soft: oklch(0.7917 0.1228 235.77);
+  --gold: oklch(0.8439 0.1513 87.87);
+  --ember: oklch(0.6574 0.1789 40.45);
+  --cross: oklch(0.6122 0.2082 22.24);
+  --studies: oklch(0.6185 0.1528 149.11);
+  --council: oklch(0.5138 0.1662 258.21);
+  --career: oklch(0.4685 0.1522 301.7);
+  --whatsapp: oklch(0.761 0.2015 149.74);
+
+  --background: oklch(0.9814 0.0045 258.32);
+  --foreground: oklch(0.2554 0.0891 263.6);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.2554 0.0891 263.6);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.2554 0.0891 263.6);
+  --primary: oklch(0.2554 0.0891 263.6);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.9421 0.0104 261.79);
+  --secondary-foreground: oklch(0.2554 0.0891 263.6);
+  --muted: oklch(0.9421 0.0104 261.79);
+  --muted-foreground: oklch(0.5277 0.0558 264.46);
+  --accent: oklch(0.8439 0.1513 87.87);
+  --accent-foreground: oklch(0.1566 0.0438 266.78);
+  --destructive: oklch(0.6122 0.2082 22.24);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.9 0.012 261.79);
+  --input: oklch(0.9 0.012 261.79);
+  --ring: oklch(0.7083 0.1466 244.05);
+
+  --gradient-gold: linear-gradient(100deg, var(--gold), var(--ember));
+  --gradient-space: radial-gradient(
+      120% 90% at 78% 10%,
+      color-mix(in oklab, var(--neon) 22%, transparent),
+      transparent 60%
+    ),
+    linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 100%);
+  --shadow-soft: 0 12px 34px -16px color-mix(in oklab, var(--navy-ink) 45%, transparent);
+  --shadow-lift: 0 26px 50px -22px color-mix(in oklab, var(--navy-ink) 55%, transparent);
+  --shadow-glow: 0 0 0 1px color-mix(in oklab, var(--neon) 45%, transparent),
+    0 0 34px -6px color-mix(in oklab, var(--neon) 45%, transparent);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+    /* Clip any off-screen content (e.g. the closed mobile drawer) so it
+       never shows a horizontal scrollbar or pushes the layout wider. */
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+}
+
+/* ---------- Brand utilities ---------- */
+
+@utility text-gradient-gold {
+  background-image: var(--gradient-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility surface-space {
+  background: var(--gradient-space);
+  color: var(--color-primary-foreground);
+  position: relative;
+  isolation: isolate;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   Keyframe animations – professional micro-interactions
+   ────────────────────────────────────────────────────────────── */
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-18px) translateX(6px);
+  }
+  50% {
+    transform: translateY(-8px) translateX(-4px);
+  }
+  75% {
+    transform: translateY(-22px) translateX(3px);
+  }
+}
+
+@keyframes float-medium {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0) scale(1);
+  }
+  33% {
+    transform: translateY(-14px) translateX(-8px) scale(1.05);
+  }
+  66% {
+    transform: translateY(-24px) translateX(5px) scale(0.97);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes shimmer-sweep {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes gradient-rotate {
+  0% {
+    --angle: 0deg;
+  }
+  100% {
+    --angle: 360deg;
+  }
+}
+
+@keyframes orbit-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes scale-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ── Starfield motif – now with twinkle on the ::after layer ── */
+
+@utility starfield {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background-image:
+      radial-gradient(1.6px 1.6px at 12% 22%, rgb(255 255 255 / 0.85), transparent 60%),
+      radial-gradient(1.4px 1.4px at 28% 68%, rgb(255 255 255 / 0.55), transparent 60%),
+      radial-gradient(1.8px 1.8px at 47% 14%, rgb(255 255 255 / 0.7), transparent 60%),
+      radial-gradient(1.2px 1.2px at 63% 48%, rgb(255 255 255 / 0.6), transparent 60%),
+      radial-gradient(2px 2px at 78% 26%, rgb(255 255 255 / 0.8), transparent 60%),
+      radial-gradient(1.3px 1.3px at 88% 72%, rgb(255 255 255 / 0.5), transparent 60%),
+      radial-gradient(1.5px 1.5px at 8% 84%, rgb(255 255 255 / 0.45), transparent 60%),
+      radial-gradient(1.4px 1.4px at 36% 92%, rgb(255 255 255 / 0.4), transparent 60%);
+  }
+  /* Twinkling layer */
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background-image:
+      radial-gradient(2.2px 2.2px at 18% 35%, rgb(255 255 255 / 0.9), transparent 55%),
+      radial-gradient(1.8px 1.8px at 55% 72%, rgb(255 255 255 / 0.7), transparent 55%),
+      radial-gradient(2.5px 2.5px at 82% 18%, rgb(255 255 255 / 0.85), transparent 55%),
+      radial-gradient(1.6px 1.6px at 42% 55%, rgb(255 255 255 / 0.6), transparent 55%);
+    animation: twinkle 4s ease-in-out infinite;
+  }
+}
+
+@utility ring-glow {
+  box-shadow: var(--shadow-glow);
+}
+
+@utility card-soft {
+  background-color: var(--color-card);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--color-border);
+}
+
+@utility hover-lift {
+  transition:
+    transform 0.28s ease,
+    box-shadow 0.28s ease;
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lift);
+  }
+}
+
+/* ── Floating decorative orb (pure CSS, infinite loop) ── */
+@utility floating-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform;
+  filter: blur(1px);
+}
+
+/* ── CTA shimmer-sweep on hover ── */
+@utility btn-shimmer {
+  position: relative;
+  overflow: hidden;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      110deg,
+      transparent 20%,
+      rgba(255, 255, 255, 0.25) 45%,
+      rgba(255, 255, 255, 0.35) 50%,
+      rgba(255, 255, 255, 0.25) 55%,
+      transparent 80%
+    );
+    background-size: 200% 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+  &:hover::after {
+    opacity: 1;
+    animation: shimmer-sweep 1.2s ease-in-out;
+  }
+}
+
+/* ── Subtle border light sweep (for portrait) ──
+   A single soft highlight glides around the border edges — like a faint
+   light source circling the frame. Mostly transparent; never grabs attention. */
+@utility animated-ring {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      transparent 330deg,
+      color-mix(in oklab, var(--neon) 40%, transparent) 352deg,
+      color-mix(in oklab, var(--neon-soft) 20%, transparent) 358deg,
+      transparent 360deg
+    );
+    z-index: -1;
+    animation: orbit-ring 10s linear infinite;
+    opacity: 0.35;
+    filter: blur(1px);
+  }
+}
+
+/* ── Portrait soft ambient glow ── */
+@utility portrait-glow {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -14px;
+    border-radius: inherit;
+    background: radial-gradient(
+      ellipse at center,
+      color-mix(in oklab, var(--neon) 18%, transparent),
+      transparent 70%
+    );
+    z-index: -2;
+    animation: pulse-glow 5s ease-in-out infinite;
+    pointer-events: none;
+  }
+}
+
+/* ── Trust badge subtle bob ── */
+@utility badge-bob {
+  animation: bob 3s ease-in-out infinite;
+}
+
+/* ── Nursing-specialty marquee (seamless scroll band) ──
+   The track holds the icon list duplicated exactly twice; translating by
+   -50% loops forever. Each copy adds `pr-4` so the seam gap matches the
+   internal `gap-4`, keeping the loop invisible. */
+@keyframes marquee-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@utility medical-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-x 45s linear infinite;
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+@utility marquee-mask {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+}
+
+/* ── Navbar twinkling stars (subtle, fixed-position safe) ── */
+@utility nav-starfield {
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    border-radius: inherit;
+    background-image:
+      radial-gradient(1px 1px at 8% 50%, rgb(255 255 255 / 0.7), transparent 60%),
+      radial-gradient(1.2px 1.2px at 22% 30%, rgb(255 255 255 / 0.45), transparent 55%),
+      radial-gradient(1px 1px at 45% 65%, rgb(255 255 255 / 0.55), transparent 55%),
+      radial-gradient(0.8px 0.8px at 60% 25%, rgb(255 255 255 / 0.35), transparent 50%),
+      radial-gradient(1.3px 1.3px at 75% 55%, rgb(255 255 255 / 0.5), transparent 55%),
+      radial-gradient(1px 1px at 92% 40%, rgb(255 255 255 / 0.6), transparent 55%);
+    animation: twinkle 5s ease-in-out infinite;
+  }
+}
+
+@utility reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  &[data-visible="true"] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .hover-lift {
+    transition: none;
+  }
+
+  .hover-lift:hover {
+    transform: none;
+  }
+
+  /* Disable all looping / decorative animations for a11y */
+  .starfield::after,
+  .floating-orb,
+  .animated-ring::before,
+  .portrait-glow::after,
+  .badge-bob,
+  .medical-marquee-track {
+    animation: none !important;
+  }
+
+  .btn-shimmer::after {
+    display: none;
+  }
+}
