@@ -51,9 +51,6 @@ export function Navbar() {
   // scroll-lock to be released by React's effect cleanup before scrolling.
   const scrollToSection = useCallback((href: string, waitForUnlock: boolean) => {
     const doScroll = () => {
-      // Keep the URL hash in sync (preventDefault means native hash didn't
-      // update). replaceState won't trigger a scroll or add history entries.
-      history.replaceState(null, "", href);
       if (href === "#home") {
         window.scrollTo({ top: 0, behavior: "smooth" });
         return;
