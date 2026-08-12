@@ -50,7 +50,7 @@
 // ============================================================================
 
 // Imports for images stored in src/assets (add new ones here as needed):
-import nursePortrait from "@/assets/nurse-portrait.jpg";
+import nursePortrait from "@/assets/profile.jpeg";
 import logo from "@/assets/logo.jpg";
 
 export type SiteImage = {

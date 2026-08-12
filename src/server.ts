@@ -44,18 +44,58 @@ function isH3SwallowedErrorBody(body: string): boolean {
   }
 }
 
+// ---------------------------------------------------------------------------
+// Security hardening: add safe, site-wide response headers on every response
+// this worker emits (HTML, assets, JSON). These reduce clickjacking, MIME
+// sniffing and referrer leakage without altering application behaviour. A
+// Content-Security-Policy is intentionally NOT added here because TanStack
+// Start's SSR emits inline scripts/styles and loads Google Fonts; a CSP must be
+// tuned against a real render and deployed at the platform/CDN layer, where it
+// can be tested per environment. See the security audit notes in DESIGN_SETUP.md.
+// ---------------------------------------------------------------------------
+const SECURITY_HEADERS: Record<string, string> = {
+  "X-Content-Type-Options": "nosniff",
+  "X-Frame-Options": "SAMEORIGIN",
+  "Referrer-Policy": "strict-origin-when-cross-origin",
+  "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
+};
+
+function withSecurityHeaders(request: Request, response: Response): Response {
+  const headers = new Headers(response.headers);
+  for (const [name, value] of Object.entries(SECURITY_HEADERS)) {
+    if (!headers.has(name)) headers.set(name, value);
+  }
+  // HSTS only when the request arrived over HTTPS (browsers ignore it on plain
+  // HTTP, and it keeps localhost/dev servers working over http://).
+  try {
+    if (new URL(request.url).protocol === "https:") {
+      headers.set("Strict-Transport-Security", "max-age=31536000; includeSubDomains; preload");
+    }
+  } catch {
+    // Malformed request URL — leave headers as-is.
+  }
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers,
+  });
+}
+
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
-      return await normalizeCatastrophicSsrResponse(response);
+      return withSecurityHeaders(request, await normalizeCatastrophicSsrResponse(response));
     } catch (error) {
       console.error(error);
-      return new Response(renderErrorPage(), {
-        status: 500,
-        headers: { "content-type": "text/html; charset=utf-8" },
-      });
+      return withSecurityHeaders(
+        request,
+        new Response(renderErrorPage(), {
+          status: 500,
+          headers: { "content-type": "text/html; charset=utf-8" },
+        }),
+      );
     }
   },
 };

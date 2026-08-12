@@ -4,14 +4,86 @@ import { MessageCircle, Phone, Instagram, Youtube, Send, AtSign, CheckCircle2 } 
 import { phone, socials, wa, WHATSAPP_NUMBER } from "@/data/site";
 import { Reveal } from "@/components/Reveal";
 
+type FormErrors = Partial<Record<"name" | "contact" | "message", string>>;
+
+const NAME_MAX = 100;
+const CONTACT_MAX = 150;
+const MESSAGE_MAX = 1000;
+
+// Allowed characters for a phone number / email: alphanumerics plus the common
+// phone/email punctuation. Anything else (angle brackets, quotes, backticks,
+// etc.) is rejected so no markup can ever reach the WhatsApp link.
+const CONTACT_PATTERN = /^[A-Za-z0-9@.+_()\-\s]+$/;
+
+// eslint-disable-next-line no-control-regex
+const CONTROL_CHARS = /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/;
+
+function hasControlChars(value: string): boolean {
+  return CONTROL_CHARS.test(value);
+}
+
+// Clears a single field error on change. Uses delete (not `= undefined`)
+// because tsconfig's exactOptionalPropertyTypes rejects assigning undefined.
+function clearFieldError(
+  setter: React.Dispatch<React.SetStateAction<FormErrors>>,
+  field: keyof FormErrors,
+) {
+  setter((prev) => {
+    const next = { ...prev };
+    delete next[field];
+    return next;
+  });
+}
+
 export function Contact() {
   const [sent, setSent] = useState(false);
+  const [errors, setErrors] = useState<FormErrors>({});
+
+  // Validates the submitted fields before composing the WhatsApp message.
+  // This is defense-in-depth: the values are only ever URL-encoded into a
+  // wa.me link (no server, no storage, no rendering of raw input), but strict
+  // limits stop the message being abused or the link being malformed.
+  const validate = (data: FormData): FormErrors => {
+    const name = String(data.get("name") ?? "").trim();
+    const contact = String(data.get("contact") ?? "").trim();
+    const message = String(data.get("message") ?? "").trim();
+    const next: FormErrors = {};
+
+    if (!name) {
+      next.name = "Please enter your name.";
+    } else if (name.length > NAME_MAX) {
+      next.name = `Name must be ${NAME_MAX} characters or fewer.`;
+    } else if (hasControlChars(name)) {
+      next.name = "Name contains unsupported characters.";
+    }
+
+    if (!contact) {
+      next.contact = "Please enter a phone number or email.";
+    } else if (contact.length > CONTACT_MAX) {
+      next.contact = `Too long (max ${CONTACT_MAX} characters).`;
+    } else if (hasControlChars(contact) || !CONTACT_PATTERN.test(contact)) {
+      next.contact = "Enter a valid phone number or email address.";
+    }
+
+    if (message.length > MESSAGE_MAX) {
+      next.message = `Message must be ${MESSAGE_MAX} characters or fewer.`;
+    } else if (hasControlChars(message)) {
+      next.message = "Message contains unsupported characters.";
+    }
+
+    return next;
+  };
 
   // Composes the form details into a WhatsApp message and opens WhatsApp in a
   // new tab so the owner receives an enquiry with every field filled in.
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
+
+    const nextErrors = validate(data);
+    setErrors(nextErrors);
+    if (Object.keys(nextErrors).length > 0) return;
+
     const name = String(data.get("name") ?? "").trim();
     const contact = String(data.get("contact") ?? "").trim();
     const service = String(data.get("service") ?? "").trim();
@@ -40,7 +112,8 @@ export function Contact() {
             Let's Build Your Nursing <span className="text-gradient-gold">Future</span> Together!
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-center text-primary-foreground/75">
-            Message us on WhatsApp for a quick reply, or send your details and we'll get back to you.
+            Message us on WhatsApp for a quick reply, or send your details and we'll get back to
+            you.
           </p>
         </Reveal>
 
@@ -126,9 +199,22 @@ export function Contact() {
                       id="name"
                       name="name"
                       required
+                      maxLength={NAME_MAX}
                       autoComplete="name"
-                      className="min-h-12 w-full rounded-xl border border-input bg-background px-4 text-sm outline-none focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40"
+                      aria-invalid={errors.name ? true : undefined}
+                      aria-describedby={errors.name ? "name-error" : undefined}
+                      onChange={() => clearFieldError(setErrors, "name")}
+                      className={`min-h-12 w-full rounded-xl border bg-background px-4 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring/40 ${errors.name ? "border-destructive focus-visible:border-destructive" : "border-input focus-visible:border-ring"}`}
                     />
+                    {errors.name ? (
+                      <p
+                        id="name-error"
+                        role="alert"
+                        className="text-xs font-medium text-destructive"
+                      >
+                        {errors.name}
+                      </p>
+                    ) : null}
                   </div>
                   <div className="grid gap-2">
                     <label htmlFor="contact-detail" className="text-sm font-semibold">
@@ -138,8 +224,22 @@ export function Contact() {
                       id="contact-detail"
                       name="contact"
                       required
-                      className="min-h-12 w-full rounded-xl border border-input bg-background px-4 text-sm outline-none focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40"
+                      maxLength={CONTACT_MAX}
+                      autoComplete="tel"
+                      aria-invalid={errors.contact ? true : undefined}
+                      aria-describedby={errors.contact ? "contact-error" : undefined}
+                      onChange={() => clearFieldError(setErrors, "contact")}
+                      className={`min-h-12 w-full rounded-xl border bg-background px-4 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring/40 ${errors.contact ? "border-destructive focus-visible:border-destructive" : "border-input focus-visible:border-ring"}`}
                     />
+                    {errors.contact ? (
+                      <p
+                        id="contact-error"
+                        role="alert"
+                        className="text-xs font-medium text-destructive"
+                      >
+                        {errors.contact}
+                      </p>
+                    ) : null}
                   </div>
                   <div className="grid gap-2">
                     <label htmlFor="service" className="text-sm font-semibold">
@@ -164,8 +264,21 @@ export function Contact() {
                       id="message"
                       name="message"
                       rows={4}
-                      className="w-full rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40"
+                      maxLength={MESSAGE_MAX}
+                      aria-invalid={errors.message ? true : undefined}
+                      aria-describedby={errors.message ? "message-error" : undefined}
+                      onChange={() => clearFieldError(setErrors, "message")}
+                      className={`w-full rounded-xl border bg-background px-4 py-3 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring/40 ${errors.message ? "border-destructive focus-visible:border-destructive" : "border-input focus-visible:border-ring"}`}
                     />
+                    {errors.message ? (
+                      <p
+                        id="message-error"
+                        role="alert"
+                        className="text-xs font-medium text-destructive"
+                      >
+                        {errors.message}
+                      </p>
+                    ) : null}
                   </div>
                   <button
                     type="submit"
