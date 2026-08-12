@@ -52,10 +52,10 @@ export const wa = {
 //  SOCIAL PROFILES
 // ---------------------------------------------------------------------------
 export const socials = {
-  instagram: "https://www.instagram.com/nursing_sivanaik",
-  youtube: "https://www.youtube.com/@Nursing.sivanaik",
+  instagram: "https://www.instagram.com/nursing_sivanaik?igsh=dTVwaXpid2xyZm95&utm_source=qr",
+  youtube: "https://youtube.com/@nursing_sivanaik?si=ylExht0aPHoX_XkU",
   threads: "https://www.threads.net/@nursing_sivanaik",
-  telegram: "https://t.me/", // TODO: replace with your real Telegram group link
+  telegram: "https://t.me/thenursingjouneryWithSIVANAIK",
 } as const;
 
 // ---------------------------------------------------------------------------
@@ -115,9 +115,9 @@ export const downloads = {
 //  Change these once and every tile that uses the default picks up the new URL.
 export const resourceLinks = {
   /** Default Telegram channel/group link for "View in Telegram" buttons. */
-  defaultTelegramUrl: "https://t.me/",
-  /** Default download base URL (e.g. Google Drive folder, Cloudinary, etc.). */
-  defaultDownloadUrl: "",
+  defaultTelegramUrl: "https://t.me/thenursingjouneryWithSIVANAIK",
+  /** Default download base URL - redirect to Telegram for notes access until files are ready */
+  defaultDownloadUrl: "https://t.me/thenursingjouneryWithSIVANAIK",
 } as const;
 
 // ---------------------------------------------------------------------------
