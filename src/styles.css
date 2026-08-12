@@ -95,7 +95,8 @@
   --ring: oklch(0.7083 0.1466 244.05);
 
   --gradient-gold: linear-gradient(100deg, var(--gold), var(--ember));
-  --gradient-space: radial-gradient(
+  --gradient-space:
+    radial-gradient(
       120% 90% at 78% 10%,
       color-mix(in oklab, var(--neon) 22%, transparent),
       transparent 60%
@@ -103,7 +104,8 @@
     linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 100%);
   --shadow-soft: 0 12px 34px -16px color-mix(in oklab, var(--navy-ink) 45%, transparent);
   --shadow-lift: 0 26px 50px -22px color-mix(in oklab, var(--navy-ink) 55%, transparent);
-  --shadow-glow: 0 0 0 1px color-mix(in oklab, var(--neon) 45%, transparent),
+  --shadow-glow:
+    0 0 0 1px color-mix(in oklab, var(--neon) 45%, transparent),
     0 0 34px -6px color-mix(in oklab, var(--neon) 45%, transparent);
 }
 
@@ -409,6 +411,20 @@
   animation: bob 3s ease-in-out infinite;
 }
 
+/* ── Focus visible for accessibility ── */
+:focus-visible {
+  outline: 3px solid #0284c7 !important;
+  outline-offset: 2px !important;
+}
+
+/* ── Responsive container utility ── */
+.responsive-container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 /* ── Nursing-specialty marquee (seamless scroll band) ──
    The track holds the icon list duplicated exactly twice; translating by
    -50% loops forever. Each copy adds `pr-4` so the seam gap matches the
@@ -432,20 +448,8 @@
 }
 
 @utility marquee-mask {
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 8%,
-    black 92%,
-    transparent
-  );
-  mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 8%,
-    black 92%,
-    transparent
-  );
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
 }
 
 /* ── Navbar twinkling stars (subtle, fixed-position safe) ── */

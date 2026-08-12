@@ -21,11 +21,14 @@ export function Footer() {
               <span className="block font-display text-base font-extrabold text-primary-foreground">
                 The Nursing <span className="text-gradient-gold">Journey</span>
               </span>
-              <span className="block text-[0.65rem] tracking-[0.22em] text-neon-soft uppercase">Siva Naik</span>
+              <span className="block text-[0.65rem] tracking-[0.22em] text-neon-soft uppercase">
+                Siva Naik
+              </span>
             </span>
           </div>
           <p className="mx-auto mt-4 max-w-sm text-sm text-primary-foreground/75 sm:mx-0">
-            Your Trusted Partner in Every Step of Your Nursing Journey. Study • Register • Grow • Serve
+            Your Trusted Partner in Every Step of Your Nursing Journey. Study • Register • Grow •
+            Serve
           </p>
           <p className="mt-4 text-sm font-semibold text-neon-soft">
             19K+ nursing students following our journey
@@ -33,7 +36,9 @@ export function Footer() {
         </div>
 
         <nav aria-label="Footer navigation" className="text-center sm:text-left">
-          <h2 className="text-sm tracking-[0.2em] text-primary-foreground uppercase">Quick Links</h2>
+          <h2 className="text-sm tracking-[0.2em] text-primary-foreground uppercase">
+            Quick Links
+          </h2>
           <ul className="mt-4 grid grid-cols-2 gap-1">
             {navLinks.map((l) => (
               <li key={l.href}>
@@ -49,7 +54,9 @@ export function Footer() {
         </nav>
 
         <div className="text-center sm:text-left">
-          <h2 className="text-sm tracking-[0.2em] text-primary-foreground uppercase">Get in Touch</h2>
+          <h2 className="text-sm tracking-[0.2em] text-primary-foreground uppercase">
+            Get in Touch
+          </h2>
           <ul className="mt-4 grid gap-1">
             {[
               { icon: MessageCircle, label: `WhatsApp ${phone.whatsappDisplay}`, href: wa.contact },
@@ -76,6 +83,14 @@ export function Footer() {
       </div>
 
       <div className="border-t border-primary-foreground/10 px-4 py-5 text-center text-xs text-primary-foreground/60">
+        <div className="mx-auto mb-3 flex max-w-md flex-wrap items-center justify-center gap-x-4 gap-y-2">
+          <a
+            href="/privacy-policy"
+            className="inline-flex min-h-11 items-center justify-center text-primary-foreground/60 underline-offset-4 transition-colors hover:text-neon-soft hover:underline"
+          >
+            Privacy Policy
+          </a>
+        </div>
         © {new Date().getFullYear()} The Nursing Journey – Siva Naik. All rights reserved.
       </div>
     </footer>
