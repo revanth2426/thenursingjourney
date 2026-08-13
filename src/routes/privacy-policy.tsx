@@ -29,25 +29,25 @@ export const Route = createFileRoute("/privacy-policy")({
 
 function PrivacyPolicy() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white text-slate-900">
       <Navbar />
-      <main className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
-        <h1 className="mb-6 text-3xl font-bold text-foreground">Privacy Policy</h1>
-        <p className="mb-4 text-muted-foreground">Effective Date: August 13, 2026</p>
+      <main className="mx-auto max-w-4xl px-4 py-12 pt-32 sm:px-6 lg:px-8">
+        <h1 className="mb-6 text-3xl font-bold text-slate-900">Privacy Policy</h1>
+        <p className="mb-4 text-slate-600">Effective Date: August 13, 2026</p>
 
         <section className="mb-8">
-          <h2 className="mb-4 text-2xl font-semibold text-primary-foreground">1. Introduction</h2>
-          <p className="mb-4">
+          <h2 className="mb-4 text-2xl font-semibold text-slate-900">1. Introduction</h2>
+          <p className="mb-4 text-slate-800">
             The Nursing Journey (“we,” “our,” or “us”) is committed to protecting your privacy. This
             Privacy Policy explains how we collect, use, disclose, and safeguard your information
             when you visit our website
-            <a href="/" className="underline">
+            <a href="/" className="underline ml-1 text-blue-600">
               https://thenursingjourney.in
             </a>{" "}
             (the “Website”), use our services, or communicate with us via WhatsApp or other
             channels.
           </p>
-          <p className="mb-4">
+          <p className="mb-4 text-slate-800">
             By accessing or using the Website, you acknowledge that you have read, understood, and
             agree to be bound by this Privacy Policy. If you do not agree with this Privacy Policy,
             please do not use the Website.
@@ -55,7 +55,7 @@ function PrivacyPolicy() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-4 text-2xl font-semibold text-primary-foreground">
+          <h2 className="mb-4 text-2xl font-semibold text-slate-900">
             2. Information We Collect
           </h2>
           <p className="mb-4">
@@ -80,11 +80,11 @@ function PrivacyPolicy() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-4 text-2xl font-semibold text-primary-foreground">
+          <h2 className="mb-4 text-2xl font-semibold text-slate-900">
             3. How We Use Your Information
           </h2>
-          <p className="mb-4">We use the information we collect for the following purposes:</p>
-          <ul className="list-disc list-inside mb-4 space-y-2">
+          <p className="mb-4 text-slate-800">We use the information we collect for the following purposes:</p>
+          <ul className="list-disc list-inside mb-4 space-y-2 text-slate-800">
             <li>
               To provide and maintain our services, including assisting with APNMC/TSNC
               registrations, renewals, verifications, and career guidance.
@@ -105,7 +105,7 @@ function PrivacyPolicy() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-4 text-2xl font-semibold text-primary-foreground">
+          <h2 className="mb-4 text-2xl font-semibold text-slate-900">
             4. Legal Basis for Processing (DPDP Act 2023)
           </h2>
           <p className="mb-4">
@@ -129,7 +129,7 @@ function PrivacyPolicy() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-4 text-2xl font-semibold text-primary-foreground">
+          <h2 className="mb-4 text-2xl font-semibold text-slate-900 ">
             5. Sharing Your Information
           </h2>
           <p className="mb-4">
@@ -159,7 +159,7 @@ function PrivacyPolicy() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-4 text-2xl font-semibold text-primary-foreground">6. Data Retention</h2>
+          <h2 className="mb-4 text-2xl font-semibold text-slate-900 ">6. Data Retention</h2>
           <p className="mb-4">
             We retain your personal information and documents only for as long as necessary to
             fulfill the purposes outlined in this Privacy Policy, unless a longer retention period
@@ -173,7 +173,7 @@ function PrivacyPolicy() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-4 text-2xl font-semibold text-primary-foreground">
+          <h2 className="mb-4 text-2xl font-semibold text-slate-900 ">
             7. Your Rights Under DPDP Act 2023
           </h2>
           <p className="mb-4">You have the following rights regarding your personal data:</p>
@@ -213,7 +213,7 @@ function PrivacyPolicy() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-4 text-2xl font-semibold text-primary-foreground">
+          <h2 className="mb-4 text-2xl font-semibold text-slate-900 ">
             8. Security of Your Information
           </h2>
           <p className="mb-4">
@@ -225,7 +225,7 @@ function PrivacyPolicy() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-4 text-2xl font-semibold text-primary-foreground">
+          <h2 className="mb-4 text-2xl font-semibold text-slate-900 ">
             9. International Data Transfers
           </h2>
           <p className="mb-4">
@@ -236,7 +236,7 @@ function PrivacyPolicy() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-4 text-2xl font-semibold text-primary-foreground">
+          <h2 className="mb-4 text-2xl font-semibold text-slate-900 ">
             10. Changes to This Privacy Policy
           </h2>
           <p className="mb-4">
@@ -252,7 +252,7 @@ function PrivacyPolicy() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-4 text-2xl font-semibold text-primary-foreground">11. Contact Us</h2>
+          <h2 className="mb-4 text-2xl font-semibold text-slate-900 ">11. Contact Us</h2>
           <p className="mb-4">
             If you have any questions about this Privacy Policy or our practices, please contact us:
           </p>
@@ -271,3 +271,4 @@ function PrivacyPolicy() {
     </div>
   );
 }
+

@@ -7,7 +7,6 @@ import { AboutMissionVision } from "@/components/AboutMissionVision";
 import { Services } from "@/components/Services";
 import { ResourceLibrary } from "@/components/ResourceLibrary";
 import { SocialProof } from "@/components/SocialProof";
-import { TrustStrip } from "@/components/TrustStrip";
 import { Testimonials } from "@/components/Testimonials";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
@@ -62,7 +61,6 @@ function Index() {
         <Services />
         <ResourceLibrary />
         <SocialProof />
-        <TrustStrip />
         <Testimonials />
         <Contact />
       </main>

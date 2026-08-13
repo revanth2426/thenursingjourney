@@ -74,24 +74,26 @@
   --career: oklch(0.4685 0.1522 301.7);
   --whatsapp: oklch(0.761 0.2015 149.74);
 
-  --background: oklch(0.9814 0.0045 258.32);
-  --foreground: oklch(0.2554 0.0891 263.6);
+  /* Set a high-contrast theme for the whole site */
+  --background: oklch(1 0 0); /* Pure White background */
+  --foreground: oklch(0.15 0 0); /* Very Dark text for contrast */
+  
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.2554 0.0891 263.6);
+  --card-foreground: oklch(0.15 0 0);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.2554 0.0891 263.6);
-  --primary: oklch(0.2554 0.0891 263.6);
+  --popover-foreground: oklch(0.15 0 0);
+  --primary: oklch(0.2 0.05 260); /* Darker primary for contrast */
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.9421 0.0104 261.79);
-  --secondary-foreground: oklch(0.2554 0.0891 263.6);
-  --muted: oklch(0.9421 0.0104 261.79);
-  --muted-foreground: oklch(0.5277 0.0558 264.46);
+  --secondary: oklch(0.95 0 0);
+  --secondary-foreground: oklch(0.15 0 0);
+  --muted: oklch(0.95 0 0);
+  --muted-foreground: oklch(0.4 0 0); /* Darker muted text */
   --accent: oklch(0.8439 0.1513 87.87);
-  --accent-foreground: oklch(0.1566 0.0438 266.78);
+  --accent-foreground: oklch(0.15 0 0);
   --destructive: oklch(0.6122 0.2082 22.24);
   --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.9 0.012 261.79);
-  --input: oklch(0.9 0.012 261.79);
+  --border: oklch(0.8 0 0); /* Darker borders */
+  --input: oklch(0.8 0 0);
   --ring: oklch(0.7083 0.1466 244.05);
 
   --gradient-gold: linear-gradient(100deg, var(--gold), var(--ember));

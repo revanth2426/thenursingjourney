@@ -11,14 +11,22 @@ export function BackToTop() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Jump straight to the top. The site sets `scroll-behavior: smooth` on
+  // Jump to the home section. The site sets `scroll-behavior: smooth` on
   // <html>, so we temporarily switch it to "auto" to force an instant jump
   // instead of a slow animated scroll.
   const goTop = () => {
     const root = document.documentElement;
     const prev = root.style.scrollBehavior;
     root.style.scrollBehavior = "auto";
-    window.scrollTo(0, 0);
+    // First try to scroll to the home section (which has id="home" in Hero component)
+    const homeElement = document.querySelector("#home");
+    if (homeElement) {
+      const top = homeElement.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo(0, top);
+    } else {
+      // Fallback to document top if home section not found
+      window.scrollTo(0, 0);
+    }
     root.style.scrollBehavior = prev;
   };
 

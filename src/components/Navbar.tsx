@@ -67,11 +67,15 @@ export function Navbar() {
     }
   }, []);
 
-  // Nav click (desktop quicklinks, mobile drawer links, logo): stop the
-  // browser's default hash jump so we fully control the scroll, close the
-  // drawer if it's open, then scroll to the target.
+  // Nav click (desktop quicklinks, mobile drawer links, logo): use native navigation
+  // for page links, but handle anchor links within the same page (like #home, #about, etc.)
   const handleNavClick = useCallback(
     (e: MouseEvent<HTMLAnchorElement>, href: string) => {
+      // For external links or full page routes (not starting with #), let browser handle navigation
+      if (!href.startsWith("#")) {
+        return; // Let browser navigate naturally
+      }
+      // For anchor links within the same page, prevent default and scroll to section
       e.preventDefault();
       const wasOpen = open;
       close();

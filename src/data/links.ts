@@ -17,7 +17,7 @@
 //  2. SOCIAL PROFILES  ->  edit the `socials.*` URLs.
 //
 //  3. NAVIGATION  ->  add/remove entries in `navLinks`. `href` can be a page
-//     anchor ("#services") or a full URL ("https://...").
+//     anchor ("/#services") or a full URL ("https://...").
 //
 //  4. DOWNLOADS  ->  the `downloads.*` entries below are ready-to-use
 //     placeholders. To make a download link active:
@@ -74,12 +74,12 @@ export const phone = {
 //  NAVIGATION (navbar + footer quick links)
 // ---------------------------------------------------------------------------
 export const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Resources", href: "#resources" },
-  { label: "Why Us", href: "#why-us" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/#home" },
+  { label: "About", href: "/#about" },
+  { label: "Services", href: "/#services" },
+  { label: "Resources", href: "/#resources" },
+  { label: "Why Us", href: "/#why-us" },
+  { label: "Contact", href: "/#contact" },
 ] as const;
 
 // ---------------------------------------------------------------------------
