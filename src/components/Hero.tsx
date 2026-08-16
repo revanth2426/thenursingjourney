@@ -1,4 +1,5 @@
 import { Stethoscope, HeartPulse, Target, Handshake, Award, PillBottle, Syringe, ArrowRight, MessageCircle } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 
 import { images } from "@/data/site-images";
 import { wa } from "@/data/site";
@@ -125,23 +126,14 @@ export function Hero() {
 
           <Reveal delay={260}>
             <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center lg:justify-start">
-              <a
-                href="#services"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document
-                    .querySelector("#services")
-                    ?.scrollIntoView({ behavior: "smooth", block: "start" });
-                  // Reflect the anchor in the URL so the section can be
-                  // deep-linked/bookmarked without triggering a page reload.
-                  history.replaceState(null, "", "#services");
-                }}
+              <Link
+                to="/services"
                 className="btn-shimmer inline-flex w-full min-h-12 items-center justify-center gap-2 rounded-full px-6 font-semibold text-navy-deep transition-transform hover:scale-[1.03] sm:w-auto focus-visible:ring-2 focus-visible:ring-neon focus-visible:outline-none"
                 style={{ backgroundImage: "var(--gradient-gold)" }}
               >
                 Explore Our Services
                 <ArrowRight className="h-4 w-4" aria-hidden />
-              </a>
+              </Link>
               <a
                 href={wa.general}
                 target="_blank"

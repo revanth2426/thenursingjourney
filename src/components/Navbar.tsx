@@ -1,5 +1,6 @@
-import { useCallback, useEffect, useRef, useState, type MouseEvent } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Menu, X, MessageCircle } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 
 import { images } from "@/data/site-images";
 import { navLinks, wa } from "@/data/site";
@@ -41,54 +42,6 @@ export function Navbar() {
 
   const close = useCallback(() => setOpen(false), []);
 
-  // Offset so sections land just below the fixed header. Matches the
-  // `scroll-padding-top: 5.5rem` (88px) already set on <html> in styles.css.
-  const HEADER_OFFSET = 88;
-
-  // Scroll to a section. Uses an explicit pixel position with window.scrollTo
-  // (not scrollIntoView) so the direction is always the shortest/expected one.
-  // When `waitForUnlock` is true (drawer was open), we wait for the body
-  // scroll-lock to be released by React's effect cleanup before scrolling.
-  const scrollToSection = useCallback((href: string, waitForUnlock: boolean) => {
-    const doScroll = () => {
-      if (href === "#home") {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-        return;
-      }
-      const target = document.querySelector(href);
-      if (!target) return;
-      const top = target.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
-      window.scrollTo({ top: Math.max(top, 0), behavior: "smooth" });
-    };
-    if (waitForUnlock) {
-      window.setTimeout(doScroll, 120);
-    } else {
-      doScroll();
-    }
-  }, []);
-
-  // Nav click (desktop quicklinks, mobile drawer links, logo): use native navigation
-  // for page routes, but handle anchor links within the same page. navLinks hrefs
-  // look like "/#about" (not "#about"), so match any href whose path is empty or
-  // "/" and whose target section exists here. A native hash navigation must not
-  // run instead: it scrolls behind the open mobile drawer and never closes it.
-  const handleNavClick = useCallback(
-    (e: MouseEvent<HTMLAnchorElement>, href: string) => {
-      const hashIndex = href.indexOf("#");
-      if (hashIndex === -1) return; // real route or external — natural navigation
-      const path = href.slice(0, hashIndex);
-      const hash = href.slice(hashIndex);
-      const isSamePageAnchor =
-        (path === "" || path === "/") && !!document.querySelector(hash);
-      if (!isSamePageAnchor) return; // not on this page — let the browser navigate
-      e.preventDefault();
-      const wasOpen = open;
-      close();
-      scrollToSection(hash, wasOpen);
-    },
-    [open, close, scrollToSection]
-  );
-
   // Close on Escape key
   useEffect(() => {
     if (!open) return;
@@ -110,11 +63,7 @@ export function Navbar() {
           aria-label="Main navigation"
           className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-3 sm:px-6 lg:px-8"
         >
-          <a
-            href="#home"
-            onClick={(e) => handleNavClick(e, "#home")}
-            className="flex min-w-0 items-center gap-3"
-          >
+          <Link to="/" className="flex min-w-0 items-center gap-3">
             <img
               src={images.logo.src}
               alt={images.logo.alt}
@@ -130,19 +79,19 @@ export function Navbar() {
                 Siva Naik
               </span>
             </span>
-          </a>
+          </Link>
 
           <div className="flex items-center gap-1">
             <ul className="hidden items-center gap-1 md:flex">
               {navLinks.map((l) => (
                 <li key={l.href}>
-                  <a
-                    href={l.href}
-                    onClick={(e) => handleNavClick(e, l.href)}
+                  <Link
+                    to={l.href}
+                    onClick={close}
                     className="inline-flex min-h-11 items-center rounded-full px-3.5 text-sm font-medium text-primary-foreground/85 transition-colors hover:bg-neon/15 hover:text-neon-soft focus-visible:ring-2 focus-visible:ring-neon focus-visible:outline-none"
                   >
                     {l.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -210,13 +159,13 @@ export function Navbar() {
             <ul className="flex flex-col gap-0.5">
               {navLinks.map((l) => (
                 <li key={l.href}>
-                  <a
-                    href={l.href}
-                    onClick={(e) => handleNavClick(e, l.href)}
+                  <Link
+                    to={l.href}
+                    onClick={close}
                     className="flex min-h-12 items-center rounded-xl px-4 text-base font-medium text-white transition-colors hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-neon focus-visible:outline-none"
                   >
                     {l.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

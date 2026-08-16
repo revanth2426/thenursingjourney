@@ -1,21 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect } from "react";
 
-import { Navbar } from "@/components/Navbar";
-import { Hero } from "@/components/Hero";
-import { WhyChooseUs } from "@/components/WhyChooseUs";
-import { AboutMissionVision } from "@/components/AboutMissionVision";
-import { Services } from "@/components/Services";
-import { ResourceLibrary } from "@/components/ResourceLibrary";
-import { SocialProof } from "@/components/SocialProof";
-import { Testimonials } from "@/components/Testimonials";
-import { Contact } from "@/components/Contact";
-import { Footer } from "@/components/Footer";
-import { BackToTop } from "@/components/BackToTop";
+import { HomePage } from "@/components/HomePage";
+import { markSessionActive } from "@/lib/section-nav";
 
-const title = "The Nursing Journey – Siva Naik | Nursing Study, Council & Career Support";
-const description =
+export const title = "The Nursing Journey – Siva Naik | Nursing Study, Council & Career Support";
+export const description =
   "Nursing study materials, MCQs, nursing council registration & renewals, documentation and career guidance for nursing students and professionals in India and abroad.";
-const url = "https://thenursingjourney.in/";
+export const url = "https://thenursingjourney.in/";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -61,22 +53,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-      <main>
-        <Hero />
-        <WhyChooseUs />
-        <AboutMissionVision />
-
-        <Services />
-        <ResourceLibrary />
-        <SocialProof />
-        <Testimonials />
-        <Contact />
-      </main>
-      <Footer />
-      <BackToTop />
-    </div>
-  );
+  // Marks the SPA as active so section scrolls from here on go smooth.
+  useEffect(markSessionActive, []);
+  return <HomePage />;
 }

@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import { ArrowUp } from "lucide-react";
+import { useNavigate, useRouterState } from "@tanstack/react-router";
 
 export function BackToTop() {
   const [visible, setVisible] = useState(false);
+  const navigate = useNavigate();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > 300);
@@ -13,8 +16,13 @@ export function BackToTop() {
 
   // Jump to the home section. The site sets `scroll-behavior: smooth` on
   // <html>, so we temporarily switch it to "auto" to force an instant jump
-  // instead of a slow animated scroll.
+  // instead of a slow animated scroll. On a section URL (/about, …) navigate
+  // to "/" instead so the address bar matches what's on screen.
   const goTop = () => {
+    if (pathname !== "/") {
+      navigate({ to: "/" });
+      return;
+    }
     const root = document.documentElement;
     const prev = root.style.scrollBehavior;
     root.style.scrollBehavior = "auto";
