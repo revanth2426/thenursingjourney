@@ -59,7 +59,7 @@ export const resources: Resource[] = [
     instagramUrl: "https://www.instagram.com/nursing_sivanaik",
     instagramEnabled: true,
     downloadEnabled: true,
-    downloadUrl: "https://google.com",
+    downloadUrl: "/downloads/mental-health-nursing-1.pdf",
     telegramEnabled: false,
   },
   {

@@ -4,7 +4,7 @@ import { MessageCircle, Phone, Instagram, Youtube, Send, AtSign, CheckCircle2 } 
 import { phone, socials, wa, WHATSAPP_NUMBER } from "@/data/site";
 import { Reveal } from "@/components/Reveal";
 
-type FormErrors = Partial<Record<"name" | "contact" | "message", string>>;
+type FormErrors = Partial<Record<"name" | "contact" | "message" | "privacyConsent", string>>;
 
 const NAME_MAX = 100;
 const CONTACT_MAX = 150;
@@ -47,6 +47,7 @@ export function Contact() {
     const name = String(data.get("name") ?? "").trim();
     const contact = String(data.get("contact") ?? "").trim();
     const message = String(data.get("message") ?? "").trim();
+    const privacyConsent = data.get("privacy-consent");
     const next: FormErrors = {};
 
     if (!name) {
@@ -69,6 +70,10 @@ export function Contact() {
       next.message = `Message must be ${MESSAGE_MAX} characters or fewer.`;
     } else if (hasControlChars(message)) {
       next.message = "Message contains unsupported characters.";
+    }
+
+    if (!privacyConsent) {
+      next.privacyConsent = "You must agree to the privacy policy.";
     }
 
     return next;
@@ -280,6 +285,28 @@ export function Contact() {
                       </p>
                     ) : null}
                   </div>
+                  <div className="flex items-start gap-2">
+                    <input
+                      type="checkbox"
+                      id="privacy-consent"
+                      name="privacy-consent"
+                      required
+                      className="mt-1 h-4 w-4 rounded border-slate-300 text-neon-soft focus:ring-neon-soft"
+                      onChange={() => clearFieldError(setErrors, "privacyConsent")}
+                    />
+                    <label htmlFor="privacy-consent" className="text-sm text-slate-600">
+                      I agree to the processing of my information for the purpose of responding to my enquiry. See <a href="/privacy-policy" className="underline">Privacy Policy</a>.
+                    </label>
+                  </div>
+                  {errors.privacyConsent ? (
+                    <p
+                      id="privacy-consent-error"
+                      role="alert"
+                      className="text-xs font-medium text-destructive"
+                    >
+                      {errors.privacyConsent}
+                    </p>
+                  ) : null}
                   <button
                     type="submit"
                     className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full px-6 font-semibold text-navy-deep transition-transform hover:scale-[1.02] sm:w-auto focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"

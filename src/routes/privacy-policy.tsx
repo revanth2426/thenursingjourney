@@ -179,36 +179,27 @@ function PrivacyPolicy() {
           <p className="mb-4">You have the following rights regarding your personal data:</p>
           <ul className="list-disc list-inside mb-4 space-y-2">
             <li>
-              <strong>Right to Access:</strong> You can request a copy of the personal data we hold
-              about you.
+              <strong>Right to Access Information:</strong> You can request a copy of the personal data we hold about you.
             </li>
             <li>
-              <strong>Right to Correction:</strong> You can request that we correct any inaccurate
-              or incomplete data.
+              <strong>Right to Correction:</strong> You can request that we correct any inaccurate or incomplete data.
             </li>
             <li>
-              <strong>Right to Deletion:</strong> You can request the deletion of your personal
-              data, subject to certain exemptions.
+              <strong>Right to Erasure:</strong> You can request the deletion of your personal data, subject to certain exemptions under the Act.
             </li>
             <li>
-              <strong>Right to Restrict Processing:</strong> You can request that we limit how we
-              use your data.
+              <strong>Right to Grievance Redressal:</strong> You can file a grievance if you believe your data rights have been violated.
             </li>
             <li>
-              <strong>Right to Data Portability:</strong> You can request to receive your data in a
-              structured, commonly used format.
-            </li>
-            <li>
-              <strong>Right to Withdraw Consent:</strong> You can withdraw your consent for us to
-              process your data at any time.
+              <strong>Right to Nominate:</strong> You can nominate a person to exercise your rights in case of death or incapacity.
             </li>
           </ul>
           <p className="mb-4">
-            To exercise any of these rights, please contact us via WhatsApp at{" "}
+            To exercise any of these rights, please contact our Data Protection Officer via WhatsApp at{" "}
             <a href="https://wa.me/919494959401" className="underline">
               +91 94949 59401
             </a>{" "}
-            or through the contact form on the Website.
+            or email contact@thenursingjourney.in. We will respond within the timelines prescribed under the DPDP Act.
           </p>
         </section>
 

@@ -7,7 +7,7 @@ const reasons = [
   "Updated Information",
   "Hassle-Free Process",
   "Personalized Support",
-  "100% Confidentiality",
+  "Confidential & Responsible Data Handling",
 ];
 
 export function WhyChooseUs() {

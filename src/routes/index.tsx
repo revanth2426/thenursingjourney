@@ -58,6 +58,8 @@ function Index() {
         <Hero />
         <WhyChooseUs />
         <AboutMissionVision />
+        <WhyChooseUs />
+
         <Services />
         <ResourceLibrary />
         <SocialProof />

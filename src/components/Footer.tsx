@@ -33,6 +33,9 @@ export function Footer() {
           <p className="mt-4 text-sm font-semibold text-neon-soft">
             19K+ nursing students following our journey
           </p>
+          <p className="mt-2 text-sm text-primary-foreground/75">
+            3 Social Channels + Telegram Community
+          </p>
         </div>
 
         <nav aria-label="Footer navigation" className="text-center sm:text-left">
@@ -89,6 +92,18 @@ export function Footer() {
             className="inline-flex min-h-11 items-center justify-center text-primary-foreground/60 underline-offset-4 transition-colors hover:text-neon-soft hover:underline"
           >
             Privacy Policy
+          </a>
+          <a
+            href="/terms-of-service"
+            className="inline-flex min-h-11 items-center justify-center text-primary-foreground/60 underline-offset-4 transition-colors hover:text-neon-soft hover:underline"
+          >
+            Terms of Service
+          </a>
+          <a
+            href="/refund-policy"
+            className="inline-flex min-h-11 items-center justify-center text-primary-foreground/60 underline-offset-4 transition-colors hover:text-neon-soft hover:underline"
+          >
+            Refund Policy
           </a>
         </div>
         © {new Date().getFullYear()} The Nursing Journey – Siva Naik. All rights reserved.
