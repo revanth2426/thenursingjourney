@@ -42,6 +42,34 @@ export function Navbar() {
 
   const close = useCallback(() => setOpen(false), []);
 
+  // Drawer focus management: when open, move focus into the drawer and keep
+  // Tab cycling inside it (it is aria-modal). When closed, the drawer is
+  // inert so its links leave the tab order and the accessibility tree
+  // instead of relying on aria-hidden alone.
+  useEffect(() => {
+    if (!open) return;
+    const firstLink = drawerRef.current?.querySelector<HTMLElement>("a, button");
+    firstLink?.focus();
+  }, [open]);
+
+  const onDrawerKeyDown = useCallback((e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key !== "Tab") return;
+    const focusables = drawerRef.current?.querySelectorAll<HTMLElement>(
+      "a[href], button:not([disabled])",
+    );
+    if (!focusables || focusables.length === 0) return;
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    if (!first || !last) return;
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  }, []);
+
   // Close on Escape key
   useEffect(() => {
     if (!open) return;
@@ -122,8 +150,10 @@ export function Navbar() {
       {/* ── Mobile drawer (sibling of header — avoids z-index stacking-context conflict) ── */}
       <div
         ref={drawerRef}
+        onKeyDown={onDrawerKeyDown}
         className={`fixed inset-0 z-50 md:hidden ${open ? "" : "pointer-events-none"}`}
         aria-hidden={!open}
+        inert={!open}
         role="dialog"
         aria-modal="true"
         aria-label="Mobile navigation"

@@ -195,7 +195,7 @@ export function Contact() {
                   </button>
                 </div>
               ) : (
-                <form onSubmit={onSubmit} className="grid gap-4">
+                <form onSubmit={onSubmit} noValidate className="grid gap-4">
                   <div className="grid gap-2">
                     <label htmlFor="name" className="text-sm font-semibold">
                       Name

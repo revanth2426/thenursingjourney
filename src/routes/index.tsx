@@ -4,9 +4,9 @@ import { useEffect } from "react";
 import { HomePage } from "@/components/HomePage";
 import { markSessionActive } from "@/lib/section-nav";
 
-export const title = "The Nursing Journey – Siva Naik | Nursing Study, Council & Career Support";
+export const title = "The Nursing Journey | Nursing Study, Council & Career Support";
 export const description =
-  "Nursing study materials, MCQs, nursing council registration & renewals, documentation and career guidance for nursing students and professionals in India and abroad.";
+  "Nursing study materials, MCQs, nursing council registration & renewals, documentation and career guidance for nursing students and professionals in India.";
 export const url = "https://thenursingjourney.in/";
 
 export const Route = createFileRoute("/")({
