@@ -132,6 +132,9 @@ export function Hero() {
                   document
                     .querySelector("#services")
                     ?.scrollIntoView({ behavior: "smooth", block: "start" });
+                  // Reflect the anchor in the URL so the section can be
+                  // deep-linked/bookmarked without triggering a page reload.
+                  history.replaceState(null, "", "#services");
                 }}
                 className="btn-shimmer inline-flex w-full min-h-12 items-center justify-center gap-2 rounded-full px-6 font-semibold text-navy-deep transition-transform hover:scale-[1.03] sm:w-auto focus-visible:ring-2 focus-visible:ring-neon focus-visible:outline-none"
                 style={{ backgroundImage: "var(--gradient-gold)" }}

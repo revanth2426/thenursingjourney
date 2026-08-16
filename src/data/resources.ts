@@ -58,8 +58,13 @@ export const resources: Resource[] = [
     tags: ["mood disorders", "neurotic disorders", "schizophrenia", "psychiatry"],
     instagramUrl: "https://www.instagram.com/nursing_sivanaik",
     instagramEnabled: true,
-    downloadEnabled: true,
-    downloadUrl: "/downloads/mental-health-nursing-1.pdf",
+    downloadEnabled: false,
+    // The PDF file for Mental Health Nursing I is not uploaded yet. Per the
+    // convention in `src/data/links.ts` (defaultDownloadUrl), downloads fall
+    // back to the Telegram channel where the notes are shared until the file
+    // is published. Replace with "/downloads/mental-health-nursing-1.pdf"
+    // here once the PDF is added to `public/downloads/`.
+    downloadUrl: "https://t.me/thenursingjouneryWithSIVANAIK",
     telegramEnabled: false,
   },
   {

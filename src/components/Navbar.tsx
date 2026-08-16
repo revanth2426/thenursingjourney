@@ -128,7 +128,7 @@ export function Navbar() {
           </a>
 
           <div className="flex items-center gap-1">
-            <ul className="hidden items-center gap-1 lg:flex">
+            <ul className="hidden items-center gap-1 md:flex">
               {navLinks.map((l) => (
                 <li key={l.href}>
                   <a
@@ -157,7 +157,7 @@ export function Navbar() {
               onClick={() => setOpen((v) => !v)}
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full text-primary-foreground transition-colors hover:bg-neon/15 lg:hidden"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full text-primary-foreground transition-colors hover:bg-neon/15 md:hidden"
             >
               {open ? <X className="h-6 w-6" aria-hidden /> : <Menu className="h-6 w-6" aria-hidden />}
             </button>
@@ -168,7 +168,7 @@ export function Navbar() {
       {/* ── Mobile drawer (sibling of header — avoids z-index stacking-context conflict) ── */}
       <div
         ref={drawerRef}
-        className={`fixed inset-0 z-50 lg:hidden ${open ? "" : "pointer-events-none"}`}
+        className={`fixed inset-0 z-50 md:hidden ${open ? "" : "pointer-events-none"}`}
         aria-hidden={!open}
         role="dialog"
         aria-modal="true"

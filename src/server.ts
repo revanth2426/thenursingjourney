@@ -47,11 +47,12 @@ function isH3SwallowedErrorBody(body: string): boolean {
 // ---------------------------------------------------------------------------
 // Security hardening: add safe, site-wide response headers on every response
 // this worker emits (HTML, assets, JSON). These reduce clickjacking, MIME
-// sniffing and referrer leakage without altering application behaviour. A
-// Content-Security-Policy is intentionally NOT added here because TanStack
-// Start's SSR emits inline scripts/styles and loads Google Fonts; a CSP must be
-// tuned against a real render and deployed at the platform/CDN layer, where it
-// can be tested per environment. See the security audit notes in DESIGN_SETUP.md.
+// sniffing and referrer leakage without altering application behaviour.
+//
+// The CSP still needs 'unsafe-inline' for scripts/styles because TanStack
+// Start's SSR emits inline serialized state and inline critical styles; a
+// nonce/hash-based policy would require framework-level support. Everything
+// else is locked to 'self' plus the Google Fonts origins.
 // ---------------------------------------------------------------------------
 const SECURITY_HEADERS: Record<string, string> = {
   "X-Content-Type-Options": "nosniff",
@@ -59,6 +60,43 @@ const SECURITY_HEADERS: Record<string, string> = {
   "Referrer-Policy": "strict-origin-when-cross-origin",
   "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
 };
+
+// Applied to HTML documents only. 'unsafe-inline' for script-src/style-src is
+// required by TanStack Start's SSR (inline serialized router state and inline
+// styles). Google Fonts is the only third-party origin the site loads.
+const CSP =
+  [
+    "default-src 'self'",
+    "script-src 'self' 'unsafe-inline'",
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+    "font-src 'self' https://fonts.gstatic.com",
+    "img-src 'self' data: blob:",
+    "connect-src 'self'",
+    "object-src 'none'",
+    "base-uri 'self'",
+    "form-action 'self'",
+    "frame-ancestors 'self'",
+    "upgrade-insecure-requests",
+  ].join("; ");
+
+const PRODUCTION_HOSTS = new Set(["thenursingjourney.in", "www.thenursingjourney.in"]);
+
+// Cloudflare forwards plain-HTTP requests to the worker as-is unless "Always
+// Use HTTPS" is enabled in the dashboard. Redirect them here so the first
+// visit over http:// lands on HTTPS even without that setting. Local dev
+// (localhost, *.localhost, IP literals) is never redirected.
+function httpsRedirect(request: Request): Response | undefined {
+  let url: URL;
+  try {
+    url = new URL(request.url);
+  } catch {
+    return undefined;
+  }
+  if (url.protocol !== "http:" || !PRODUCTION_HOSTS.has(url.hostname)) return undefined;
+  url.protocol = "https:";
+  url.hostname = "thenursingjourney.in";
+  return Response.redirect(url.toString(), 301);
+}
 
 function withSecurityHeaders(request: Request, response: Response): Response {
   const headers = new Headers(response.headers);
@@ -74,6 +112,12 @@ function withSecurityHeaders(request: Request, response: Response): Response {
   } catch {
     // Malformed request URL — leave headers as-is.
   }
+  // CSP on HTML documents only — assets don't execute in a document context
+  // and skipping them keeps the policy from breaking sourcemaps/JSON endpoints.
+  const contentType = headers.get("content-type") ?? "";
+  if (contentType.includes("text/html") && !headers.has("Content-Security-Policy")) {
+    headers.set("Content-Security-Policy", CSP);
+  }
   return new Response(response.body, {
     status: response.status,
     statusText: response.statusText,
@@ -84,6 +128,9 @@ function withSecurityHeaders(request: Request, response: Response): Response {
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
+      const redirect = httpsRedirect(request);
+      if (redirect) return redirect;
+
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
       return withSecurityHeaders(request, await normalizeCatastrophicSsrResponse(response));

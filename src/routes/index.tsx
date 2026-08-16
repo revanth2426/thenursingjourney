@@ -15,6 +15,7 @@ import { BackToTop } from "@/components/BackToTop";
 const title = "The Nursing Journey – Siva Naik | Nursing Study, Council & Career Support";
 const description =
   "Nursing study materials, MCQs, nursing council registration & renewals, documentation and career guidance for nursing students and professionals in India and abroad.";
+const url = "https://thenursingjourney.in/";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -25,10 +26,17 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
-      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:url", content: url },
+      { property: "og:image", content: `${url}og-image.jpg` },
+      { property: "og:image:width", content: "1024" },
+      { property: "og:image:height", content: "1024" },
+      { property: "og:image:alt", content: "The Nursing Journey – Siva Naik logo" },
+      { property: "twitter:card", content: "summary_large_image" },
+      { property: "twitter:title", content: title },
+      { property: "twitter:description", content: description },
+      { property: "twitter:image", content: `${url}og-image.jpg` },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: url }],
     scripts: [
       {
         type: "application/ld+json",
@@ -37,6 +45,8 @@ export const Route = createFileRoute("/")({
           "@type": "ProfessionalService",
           name: "The Nursing Journey – Siva Naik",
           description,
+          url,
+          logo: `${url}og-image.jpg`,
           areaServed: ["Andhra Pradesh", "Telangana", "India"],
           founder: { "@type": "Person", name: "Siva Naik", jobTitle: "ICU Staff Nurse" },
           telephone: "+918499920742",
@@ -58,7 +68,6 @@ function Index() {
         <Hero />
         <WhyChooseUs />
         <AboutMissionVision />
-        <WhyChooseUs />
 
         <Services />
         <ResourceLibrary />
