@@ -68,18 +68,23 @@ export function Navbar() {
   }, []);
 
   // Nav click (desktop quicklinks, mobile drawer links, logo): use native navigation
-  // for page links, but handle anchor links within the same page (like #home, #about, etc.)
+  // for page routes, but handle anchor links within the same page. navLinks hrefs
+  // look like "/#about" (not "#about"), so match any href whose path is empty or
+  // "/" and whose target section exists here. A native hash navigation must not
+  // run instead: it scrolls behind the open mobile drawer and never closes it.
   const handleNavClick = useCallback(
     (e: MouseEvent<HTMLAnchorElement>, href: string) => {
-      // For external links or full page routes (not starting with #), let browser handle navigation
-      if (!href.startsWith("#")) {
-        return; // Let browser navigate naturally
-      }
-      // For anchor links within the same page, prevent default and scroll to section
+      const hashIndex = href.indexOf("#");
+      if (hashIndex === -1) return; // real route or external — natural navigation
+      const path = href.slice(0, hashIndex);
+      const hash = href.slice(hashIndex);
+      const isSamePageAnchor =
+        (path === "" || path === "/") && !!document.querySelector(hash);
+      if (!isSamePageAnchor) return; // not on this page — let the browser navigate
       e.preventDefault();
       const wasOpen = open;
       close();
-      scrollToSection(href, wasOpen);
+      scrollToSection(hash, wasOpen);
     },
     [open, close, scrollToSection]
   );
