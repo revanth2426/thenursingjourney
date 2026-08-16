@@ -112,10 +112,24 @@ function withSecurityHeaders(request: Request, response: Response): Response {
   } catch {
     // Malformed request URL — leave headers as-is.
   }
-  // CSP on HTML documents only — assets don't execute in a document context
-  // and skipping them keeps the policy from breaking sourcemaps/JSON endpoints.
+  // CSP on HTML documents only, and only in production. In dev, Vite serves
+  // plain HTTP (often over a LAN IP from other machines); the policy's
+  // upgrade-insecure-requests directive would rewrite every asset request to
+  // https:// and break the page (no JS/CSS at all) on anything but localhost.
+  let requestUrl: URL | undefined;
+  try {
+    requestUrl = new URL(request.url);
+  } catch {
+    // Malformed — treat as non-production.
+  }
+  const isProduction =
+    requestUrl?.protocol === "https:" && !!requestUrl && PRODUCTION_HOSTS.has(requestUrl.hostname);
   const contentType = headers.get("content-type") ?? "";
-  if (contentType.includes("text/html") && !headers.has("Content-Security-Policy")) {
+  if (
+    isProduction &&
+    contentType.includes("text/html") &&
+    !headers.has("Content-Security-Policy")
+  ) {
     headers.set("Content-Security-Policy", CSP);
   }
   return new Response(response.body, {
