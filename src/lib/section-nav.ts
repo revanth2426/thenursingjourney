@@ -1,14 +1,7 @@
 // Shared helpers for path-based section URLs (/about, /services, …) that
 // render the home page and scroll to the matching section.
 
-export const SECTIONS = [
-  "home",
-  "about",
-  "services",
-  "resources",
-  "why-us",
-  "contact",
-] as const;
+export const SECTIONS = ["home", "about", "services", "resources", "why-us", "contact"] as const;
 
 export type Section = (typeof SECTIONS)[number];
 

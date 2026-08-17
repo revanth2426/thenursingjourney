@@ -16,5 +16,9 @@ export default defineConfig({
     // Bind to all interfaces so the dev server is reachable from other
     // devices on the LAN (e.g. http://192.168.x.x:8080) for testing.
     server: { host: "0.0.0.0" },
+    // Vite 8 supports tsconfig paths natively; remove vite-tsconfig-paths plugin
+    resolve: {
+      tsconfigPaths: true,
+    },
   },
 });

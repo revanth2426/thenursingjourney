@@ -72,7 +72,10 @@ const services: Service[] = [
   },
 ];
 
-const accentClasses: Record<Service["accent"], { badge: string; pill: string; bar: string; check: string }> = {
+const accentClasses: Record<
+  Service["accent"],
+  { badge: string; pill: string; bar: string; check: string }
+> = {
   studies: {
     badge: "bg-studies/15 text-studies",
     pill: "bg-studies/12 text-studies",
@@ -102,7 +105,8 @@ export function Services() {
             Our 3 Core <span className="text-gradient-gold">Services</span>
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-center text-muted-foreground">
-            Everything a nursing student or working nurse needs — from notes to registration to your next role.
+            Everything a nursing student or working nurse needs — from notes to registration to your
+            next role.
           </p>
         </Reveal>
 
@@ -116,7 +120,9 @@ export function Services() {
                   <span className={`block h-1.5 w-full ${a.bar}`} aria-hidden />
                   <div className="flex flex-1 flex-col p-7">
                     <div className="flex min-w-0 items-center gap-3">
-                      <span className={`grid h-12 w-12 shrink-0 place-items-center rounded-full ${a.badge}`}>
+                      <span
+                        className={`grid h-12 w-12 shrink-0 place-items-center rounded-full ${a.badge}`}
+                      >
                         <Icon className="h-6 w-6" aria-hidden />
                       </span>
                       <h3 className="min-w-0 text-xl leading-tight">{s.title}</h3>

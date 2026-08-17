@@ -39,8 +39,8 @@ export function TrustStrip() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal>
           <h2 className="text-center font-display text-2xl text-primary-foreground sm:text-3xl">
-            Built by an <span className="text-gradient-gold">ICU staff nurse</span> — for every
-            part of your nursing journey
+            Built by an <span className="text-gradient-gold">ICU staff nurse</span> — for every part
+            of your nursing journey
           </h2>
         </Reveal>
 

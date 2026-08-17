@@ -64,20 +64,19 @@ const SECURITY_HEADERS: Record<string, string> = {
 // Applied to HTML documents only. 'unsafe-inline' for script-src/style-src is
 // required by TanStack Start's SSR (inline serialized router state and inline
 // styles). Google Fonts is the only third-party origin the site loads.
-const CSP =
-  [
-    "default-src 'self'",
-    "script-src 'self' 'unsafe-inline'",
-    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-    "font-src 'self' https://fonts.gstatic.com",
-    "img-src 'self' data: blob:",
-    "connect-src 'self'",
-    "object-src 'none'",
-    "base-uri 'self'",
-    "form-action 'self'",
-    "frame-ancestors 'self'",
-    "upgrade-insecure-requests",
-  ].join("; ");
+const CSP = [
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline'",
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "font-src 'self' https://fonts.gstatic.com",
+  "img-src 'self' data: blob:",
+  "connect-src 'self'",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'self'",
+  "upgrade-insecure-requests",
+].join("; ");
 
 const PRODUCTION_HOSTS = new Set(["thenursingjourney.in", "www.thenursingjourney.in"]);
 

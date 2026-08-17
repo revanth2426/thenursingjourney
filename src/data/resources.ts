@@ -235,7 +235,5 @@ export const resources: Resource[] = [
 // ---------------------------------------------------------------------------
 export const resourceCategories: ("All" | ResourceCategory)[] = [
   "All",
-  ...Array.from(
-    new Set(resources.filter((r) => r.enabled).map((r) => r.category)),
-  ),
+  ...Array.from(new Set(resources.filter((r) => r.enabled).map((r) => r.category))),
 ];

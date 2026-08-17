@@ -115,9 +115,7 @@ function RootShell({ children }: { children: ReactNode }) {
           href="#home"
           onClick={(e) => {
             e.preventDefault();
-            document
-              .querySelector("#home")
-              ?.scrollIntoView({ behavior: "smooth", block: "start" });
+            document.querySelector("#home")?.scrollIntoView({ behavior: "smooth", block: "start" });
           }}
           className="sr-only focus:not-sr-only focus:fixed focus:inset-x-0 focus:top-0 focus:z-[100] focus:bg-primary focus:py-3 focus:text-center focus:text-primary-foreground focus:outline-none"
         >

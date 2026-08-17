@@ -55,9 +55,7 @@ function PrivacyPolicy() {
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-4 text-2xl font-semibold text-slate-900">
-            2. Information We Collect
-          </h2>
+          <h2 className="mb-4 text-2xl font-semibold text-slate-900">2. Information We Collect</h2>
           <p className="mb-4">
             We may collect or receive certain information about you, including:
           </p>
@@ -83,7 +81,9 @@ function PrivacyPolicy() {
           <h2 className="mb-4 text-2xl font-semibold text-slate-900">
             3. How We Use Your Information
           </h2>
-          <p className="mb-4 text-slate-800">We use the information we collect for the following purposes:</p>
+          <p className="mb-4 text-slate-800">
+            We use the information we collect for the following purposes:
+          </p>
           <ul className="list-disc list-inside mb-4 space-y-2 text-slate-800">
             <li>
               To provide and maintain our services, including assisting with APNMC/TSNC
@@ -179,27 +179,34 @@ function PrivacyPolicy() {
           <p className="mb-4">You have the following rights regarding your personal data:</p>
           <ul className="list-disc list-inside mb-4 space-y-2">
             <li>
-              <strong>Right to Access Information:</strong> You can request a copy of the personal data we hold about you.
+              <strong>Right to Access Information:</strong> You can request a copy of the personal
+              data we hold about you.
             </li>
             <li>
-              <strong>Right to Correction:</strong> You can request that we correct any inaccurate or incomplete data.
+              <strong>Right to Correction:</strong> You can request that we correct any inaccurate
+              or incomplete data.
             </li>
             <li>
-              <strong>Right to Erasure:</strong> You can request the deletion of your personal data, subject to certain exemptions under the Act.
+              <strong>Right to Erasure:</strong> You can request the deletion of your personal data,
+              subject to certain exemptions under the Act.
             </li>
             <li>
-              <strong>Right to Grievance Redressal:</strong> You can file a grievance if you believe your data rights have been violated.
+              <strong>Right to Grievance Redressal:</strong> You can file a grievance if you believe
+              your data rights have been violated.
             </li>
             <li>
-              <strong>Right to Nominate:</strong> You can nominate a person to exercise your rights in case of death or incapacity.
+              <strong>Right to Nominate:</strong> You can nominate a person to exercise your rights
+              in case of death or incapacity.
             </li>
           </ul>
           <p className="mb-4">
-            To exercise any of these rights, please contact our Data Protection Officer via WhatsApp at{" "}
+            To exercise any of these rights, please contact our Data Protection Officer via WhatsApp
+            at{" "}
             <a href="https://wa.me/919494959401" className="underline">
               +91 94949 59401
             </a>{" "}
-            or email contact@thenursingjourney.in. We will respond within the timelines prescribed under the DPDP Act.
+            or email contact@thenursingjourney.in. We will respond within the timelines prescribed
+            under the DPDP Act.
           </p>
         </section>
 
@@ -262,4 +269,3 @@ function PrivacyPolicy() {
     </div>
   );
 }
-

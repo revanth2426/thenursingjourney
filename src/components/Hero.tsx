@@ -1,4 +1,14 @@
-import { Stethoscope, HeartPulse, Target, Handshake, Award, PillBottle, Syringe, ArrowRight, MessageCircle } from "lucide-react";
+import {
+  Stethoscope,
+  HeartPulse,
+  Target,
+  Handshake,
+  Award,
+  PillBottle,
+  Syringe,
+  ArrowRight,
+  MessageCircle,
+} from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
 import { images } from "@/data/site-images";
@@ -28,7 +38,8 @@ function FloatingOrbs() {
           height: "260px",
           top: "8%",
           left: "-4%",
-          background: "radial-gradient(circle, color-mix(in oklab, var(--neon) 18%, transparent), transparent 70%)",
+          background:
+            "radial-gradient(circle, color-mix(in oklab, var(--neon) 18%, transparent), transparent 70%)",
           animation: "float-slow 12s ease-in-out infinite",
         }}
       />
@@ -40,7 +51,8 @@ function FloatingOrbs() {
           height: "180px",
           top: "30%",
           right: "2%",
-          background: "radial-gradient(circle, color-mix(in oklab, var(--gold) 15%, transparent), transparent 70%)",
+          background:
+            "radial-gradient(circle, color-mix(in oklab, var(--gold) 15%, transparent), transparent 70%)",
           animation: "float-medium 10s ease-in-out infinite 1s",
         }}
       />
@@ -52,7 +64,8 @@ function FloatingOrbs() {
           height: "120px",
           bottom: "12%",
           left: "35%",
-          background: "radial-gradient(circle, color-mix(in oklab, var(--ember) 14%, transparent), transparent 70%)",
+          background:
+            "radial-gradient(circle, color-mix(in oklab, var(--ember) 14%, transparent), transparent 70%)",
           animation: "float-slow 14s ease-in-out infinite 3s",
         }}
       />
@@ -64,7 +77,8 @@ function FloatingOrbs() {
           height: "80px",
           top: "15%",
           right: "18%",
-          background: "radial-gradient(circle, color-mix(in oklab, var(--neon-soft) 20%, transparent), transparent 65%)",
+          background:
+            "radial-gradient(circle, color-mix(in oklab, var(--neon-soft) 20%, transparent), transparent 65%)",
           animation: "float-medium 8s ease-in-out infinite 2s",
         }}
       />
@@ -76,7 +90,8 @@ function FloatingOrbs() {
           height: "150px",
           top: "55%",
           left: "5%",
-          background: "radial-gradient(circle, color-mix(in oklab, var(--gold) 10%, transparent), transparent 70%)",
+          background:
+            "radial-gradient(circle, color-mix(in oklab, var(--gold) 10%, transparent), transparent 70%)",
           animation: "float-slow 16s ease-in-out infinite 4s",
         }}
       />
@@ -119,8 +134,8 @@ export function Hero() {
 
           <Reveal delay={200}>
             <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-primary-foreground/80 sm:text-lg lg:mx-0">
-              Your Trusted Partner in Every Step of Your Nursing Journey — study support, nursing council
-              services and career guidance from a practising ICU staff nurse.
+              Your Trusted Partner in Every Step of Your Nursing Journey — study support, nursing
+              council services and career guidance from a practising ICU staff nurse.
             </p>
           </Reveal>
 
@@ -154,7 +169,10 @@ export function Hero() {
               {/* Soft ambient glow behind portrait */}
               <div
                 className="absolute -inset-4 rounded-[2.5rem] opacity-60 blur-3xl"
-                style={{ background: "radial-gradient(closest-side, color-mix(in oklab, var(--neon) 40%, transparent), transparent)" }}
+                style={{
+                  background:
+                    "radial-gradient(closest-side, color-mix(in oklab, var(--neon) 40%, transparent), transparent)",
+                }}
                 aria-hidden
               />
               <img
@@ -166,7 +184,10 @@ export function Hero() {
               />
 
               {/* Floating nursing badges around the portrait */}
-              <div aria-hidden className="badge-bob absolute -right-4 top-8 grid h-11 w-11 place-items-center rounded-full border border-neon/40 bg-navy/90 text-neon-soft shadow-lg backdrop-blur-sm">
+              <div
+                aria-hidden
+                className="badge-bob absolute -right-4 top-8 grid h-11 w-11 place-items-center rounded-full border border-neon/40 bg-navy/90 text-neon-soft shadow-lg backdrop-blur-sm"
+              >
                 <Stethoscope className="h-5 w-5" />
               </div>
               <div
@@ -194,10 +215,14 @@ export function Hero() {
                   className="badge-bob flex min-w-0 items-center gap-2 rounded-full border border-primary-foreground/10 bg-primary-foreground/5 px-3 py-2 backdrop-blur-sm transition-colors hover:bg-primary-foreground/10"
                   style={{ animationDelay: `${i * 0.4}s` }}
                 >
-                  <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full ${color}`}>
+                  <span
+                    className={`grid h-8 w-8 shrink-0 place-items-center rounded-full ${color}`}
+                  >
                     <Icon className="h-4 w-4" aria-hidden />
                   </span>
-                  <span className="min-w-0 whitespace-nowrap text-xs font-medium text-primary-foreground/90 sm:text-sm">{label}</span>
+                  <span className="min-w-0 whitespace-nowrap text-xs font-medium text-primary-foreground/90 sm:text-sm">
+                    {label}
+                  </span>
                 </li>
               ))}
             </ul>

@@ -77,7 +77,7 @@
   /* Set a high-contrast theme for the whole site */
   --background: oklch(1 0 0); /* Pure White background */
   --foreground: oklch(0.15 0 0); /* Very Dark text for contrast */
-  
+
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.15 0 0);
   --popover: oklch(1 0 0);

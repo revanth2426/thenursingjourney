@@ -32,7 +32,9 @@ export function WhyChooseUs() {
                     <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-studies/25 text-studies">
                       <Check className="h-5 w-5" aria-hidden />
                     </span>
-                    <span className="min-w-0 text-base font-semibold text-primary-foreground sm:text-lg">{r}</span>
+                    <span className="min-w-0 text-base font-semibold text-primary-foreground sm:text-lg">
+                      {r}
+                    </span>
                   </li>
                 ))}
               </ul>

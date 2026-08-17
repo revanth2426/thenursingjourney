@@ -11,10 +11,10 @@ nursing consultancy and education brand based in Andhra Pradesh & Telangana,
 India, founded by **Siva Naik** — an ICU Staff Nurse, BSc Nursing graduate, and
 AIIMS NORCET exam-prep content creator.
 
-- Tagline: *"Your Trusted Partner in Every Step of Your Nursing Journey"*
+- Tagline: _"Your Trusted Partner in Every Step of Your Nursing Journey"_
 - Process line: **STUDY • REGISTER • GROW • SERVE**
-- Hero quote: *"From Nursing Studies to Professional Success — We Support Your
-  Journey."*
+- Hero quote: _"From Nursing Studies to Professional Success — We Support Your
+  Journey."_
 
 ## Audience
 

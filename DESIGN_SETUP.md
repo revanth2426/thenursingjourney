@@ -10,11 +10,11 @@ and **(2)** the security hardening audit and every change made.
 
 ### Skills — installed to `.claude/skills/` (project-scoped, committed)
 
-| Skill | What it gives Claude | Location |
-| ----- | -------------------- | -------- |
-| `emil-design-eng` | Craft judgement: easing, shadows, durations, animation auditing | `.claude/skills/emil-design-eng` |
-| `impeccable` | Vocabulary layer: 23 slash commands + 59 detector rules | `.claude/skills/impeccable` |
-| `design-taste-frontend` | References/taste: layout, typography, motion, spacing | `.claude/skills/design-taste-frontend` |
+| Skill                   | What it gives Claude                                            | Location                               |
+| ----------------------- | --------------------------------------------------------------- | -------------------------------------- |
+| `emil-design-eng`       | Craft judgement: easing, shadows, durations, animation auditing | `.claude/skills/emil-design-eng`       |
+| `impeccable`            | Vocabulary layer: 23 slash commands + 59 detector rules         | `.claude/skills/impeccable`            |
+| `design-taste-frontend` | References/taste: layout, typography, motion, spacing           | `.claude/skills/design-taste-frontend` |
 
 Installed with the skills CLI (non-interactive agent target = `claude-code`):
 
@@ -169,4 +169,3 @@ validation. Added:
 6. **`src/components/ui/chart.tsx`** uses `dangerouslySetInnerHTML` for a static,
    developer-controlled `<style>` block — safe as-is (no user input), but worth
    remembering if it ever becomes dynamic.
-

@@ -48,19 +48,22 @@ You are a senior full-stack web designer and front-end developer. Build a comple
 ### 3. SECTION-BY-SECTION CONTENT
 
 **A. Sticky Navbar**
+
 - Logo + brand name (left)
 - Nav links: Home, About, Services, Resources, Why Us, Contact
 - WhatsApp CTA button (top right): "Chat on WhatsApp" — use the pre-filled General CTA link below
 - Hamburger menu on mobile with slide-in drawer
 
 **Pre-filled WhatsApp links** — every WhatsApp CTA on the site should use a contextual pre-filled `wa.me` message rather than a blank chat. Use these exact links per section:
-  - General/Hero/Navbar CTA: `https://wa.me/919494959401?text=Hi%20Siva%20Naik%2C%20I%20would%20like%20to%20know%20more%20about%20your%20nursing%20services`
-  - Studies & Education CTA: `https://wa.me/919494959401?text=Hi%2C%20I%20need%20help%20with%20Nursing%20Study%20Materials%2FNotes`
-  - Nursing Council Services CTA: `https://wa.me/919494959401?text=Hi%2C%20I%20need%20help%20with%20Nursing%20Council%20Registration%2FRenewal`
-  - Career Support CTA: `https://wa.me/919494959401?text=Hi%2C%20I%20need%20guidance%20on%20Nursing%20Career%2FJob%20Opportunities`
-  - Final Contact section CTA: `https://wa.me/919494959401?text=Hi%20Siva%20Naik%2C%20I%20filled%20out%20your%20website%20form%20and%20would%20like%20to%20connect`
+
+- General/Hero/Navbar CTA: `https://wa.me/919494959401?text=Hi%20Siva%20Naik%2C%20I%20would%20like%20to%20know%20more%20about%20your%20nursing%20services`
+- Studies & Education CTA: `https://wa.me/919494959401?text=Hi%2C%20I%20need%20help%20with%20Nursing%20Study%20Materials%2FNotes`
+- Nursing Council Services CTA: `https://wa.me/919494959401?text=Hi%2C%20I%20need%20help%20with%20Nursing%20Council%20Registration%2FRenewal`
+- Career Support CTA: `https://wa.me/919494959401?text=Hi%2C%20I%20need%20guidance%20on%20Nursing%20Career%2FJob%20Opportunities`
+- Final Contact section CTA: `https://wa.me/919494959401?text=Hi%20Siva%20Naik%2C%20I%20filled%20out%20your%20website%20form%20and%20would%20like%20to%20connect`
 
 **B. Hero Section**
+
 - Large headline: "THE NURSING JOURNEY" with "JOURNEY" in orange/gold
 - Sub-label: "★ SIVA NAIK ★" in a pill/badge
 - Process line: STUDY • REGISTER • GROW • SERVE
@@ -71,6 +74,7 @@ You are a senior full-stack web designer and front-end developer. Build a comple
 
 **C. "Why Choose Us" Panel**
 Dark navy rounded card with checklist (green checkmarks):
+
 - Expert Guidance
 - Updated Information
 - Hassle-Free Process
@@ -78,9 +82,11 @@ Dark navy rounded card with checklist (green checkmarks):
 - 100% Confidentiality
 
 Paired beside it, a navy quote card:
+
 > "From Nursing Studies to Professional Success — We Support Your Journey."
 
 **D. About / Mission / Vision** (new section, not on the poster but should be added for a full website)
+
 - **About Us:** The Nursing Journey – Siva Naik is a dedicated platform supporting nursing students and professionals throughout their academic and professional journey — offering study support, educational guidance, nursing council services, documentation assistance, and career guidance.
 - **Mission:** To empower nursing students and professionals with quality education, practical knowledge, professional guidance, and reliable support — helping them progress confidently from nursing studies to a successful career.
 - **Vision:** To become a trusted nursing platform that connects education, professional registration, documentation, higher studies, and career opportunities — supporting nurses at every stage of their journey.
@@ -143,13 +149,15 @@ Siva Naik's Instagram is primarily a high-volume educational content channel: su
 - Note in code comments: this grid should be built so new resource cards can be added easily (array/data-driven list, not hardcoded repeated markup) since new content is posted frequently.
 
 **G. Social Proof Strip** (new — thin horizontal stat band, right after the resource library, navy or white background with bold navy numbers)
+
 - 19K+ Instagram Followers
 - 119+ Educational Posts
 - Active on YouTube, Instagram & Threads
 - Based in Andhra Pradesh & Telangana
-Display as 4 large stat numbers with small labels underneath, responsive to a 2x2 grid on mobile.
+  Display as 4 large stat numbers with small labels underneath, responsive to a 2x2 grid on mobile.
 
 **H. Trust/Process Strip** (dark navy horizontal band, 5 icons in a row, stacks to 2 columns on mobile)
+
 - Save Time & Effort
 - Accurate & Updated Information
 - Step by Step Guidance
@@ -157,9 +165,11 @@ Display as 4 large stat numbers with small labels underneath, responsive to a 2x
 - Your Success is Our Priority
 
 **I. Testimonials Section** (new — add for full website credibility, even as placeholder structure)
+
 - 3-card carousel/grid with placeholder quotes, nurse name, course/service used, star rating. Include a note in code comments: "Replace placeholder testimonials with real client feedback."
 
 **J. Contact / CTA Section**
+
 - Heading: "Let's Build Your Nursing Future Together!"
 - WhatsApp: 94949 59401 (click-to-chat button, green, WhatsApp icon) — use the Final Contact section pre-filled link above
 - Phone/Call: 84999 20742 (click-to-call button) → `tel:+918499920742`
@@ -167,6 +177,7 @@ Display as 4 large stat numbers with small labels underneath, responsive to a 2x
 - Social links: Instagram (@nursing_sivanaik → https://www.instagram.com/nursing_sivanaik), YouTube (youtube.com/@Nursing.sivanaik), Threads (@nursing_sivanaik), Telegram ("THE NURSING JOURNEY – SIVA NAIK")
 
 **K. Footer**
+
 - Logo + short tagline
 - Quick links (nav anchors)
 - Contact info repeated (WhatsApp, phone, Instagram, YouTube, Threads, Telegram)
@@ -197,6 +208,7 @@ Display as 4 large stat numbers with small labels underneath, responsive to a 2x
 `, `
 
 `) and ARIA labels where relevant for accessibility.
+
 - Add Next.js metadata for SEO: title ("The Nursing Journey – Siva Naik | Nursing Study, Council & Career Support"), meta description summarizing the mission, Open Graph tags for social sharing, and the provided logo as favicon.
 - Ensure fast load: no unnecessary large dependencies, lazy-load images below the fold.
 - Cross-browser consistency (Chrome, Safari, Firefox, Edge) — avoid CSS features with poor support without fallbacks.
@@ -248,10 +260,10 @@ Edit that one file to swap any picture — the Navbar, Footer, Hero and favicon 
 
 ### Where to put the files
 
-| Type of image | Folder |
-| ------------- | ------ |
+| Type of image                      | Folder        |
+| ---------------------------------- | ------------- |
 | Photos / graphics used on the page | `src/assets/` |
-| Favicon / browser icons | `public/` |
+| Favicon / browser icons            | `public/`     |
 
 ### Filling in the file
 
@@ -269,13 +281,12 @@ Edit that one file to swap any picture — the Navbar, Footer, Hero and favicon 
 
 ### Recommended dimensions
 
-| Image | Where it appears | Recommended size |
-| ----- | ---------------- | ---------------- |
-| Logo | Navbar (~44px circle) + Footer (~56px circle) | Square, ≥512×512 (ideal 1024×1024), PNG/JPG/SVG |
-| Hero photo | Top section, right side | Portrait ~4:5 (e.g. 912×1104), max ~1000px wide, < 250 KB |
-| Favicon | Browser tab | Square PNG 32×32 or 48×48, keep tiny |
-| OG/share image *(optional)* | WhatsApp/Instagram/FB/Twitter link preview | Exactly 1200×630, < 1 MB |
-
+| Image                       | Where it appears                              | Recommended size                                          |
+| --------------------------- | --------------------------------------------- | --------------------------------------------------------- |
+| Logo                        | Navbar (~44px circle) + Footer (~56px circle) | Square, ≥512×512 (ideal 1024×1024), PNG/JPG/SVG           |
+| Hero photo                  | Top section, right side                       | Portrait ~4:5 (e.g. 912×1104), max ~1000px wide, < 250 KB |
+| Favicon                     | Browser tab                                   | Square PNG 32×32 or 48×48, keep tiny                      |
+| OG/share image _(optional)_ | WhatsApp/Instagram/FB/Twitter link preview    | Exactly 1200×630, < 1 MB                                  |
 
 Keep photos compressed (use a tool like [tinypng.com](https://tinypng.com)) so the page loads fast — a 250 KB limit per photo is a good target.
 
@@ -298,5 +309,3 @@ Open that file and follow the comments at the top. A quick summary:
 
 > `src/data/site.ts` is now just a compatibility shim that re-exports `links.ts`.
 > Always edit `links.ts`, never `site.ts`.
-
-

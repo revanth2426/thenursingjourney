@@ -9,6 +9,7 @@ import { description, title, url } from "@/routes/index";
  * Each of those URLs renders the home page scrolled to its section; canonical
  * stays on "/" because the document is the same.
  */
+
 export function sectionHead() {
   return {
     meta: [

@@ -1,4 +1,13 @@
-import { Info, Target, Eye, MapPin, GraduationCap, BookOpen, Stethoscope, HeartPulse } from "lucide-react";
+import {
+  Info,
+  Target,
+  Eye,
+  MapPin,
+  GraduationCap,
+  BookOpen,
+  Stethoscope,
+  HeartPulse,
+} from "lucide-react";
 
 import { Reveal } from "@/components/Reveal";
 
@@ -62,8 +71,9 @@ export function AboutMissionVision() {
               Meet the nurse behind the <span className="text-gradient-gold">journey</span>
             </h3>
             <p className="mt-2 max-w-2xl text-sm text-primary-foreground/75">
-              Siva Naik is an ICU staff nurse and BSc Nursing graduate who creates daily nursing education
-              content and AIIMS NORCET exam prep — a real practising nurse, not a faceless agency.
+              Siva Naik is an ICU staff nurse and BSc Nursing graduate who creates daily nursing
+              education content and AIIMS NORCET exam prep — a real practising nurse, not a faceless
+              agency.
             </p>
             <ul className="mt-6 flex flex-wrap justify-center gap-2.5 sm:justify-start">
               {bio.map(({ icon: Icon, text }) => (

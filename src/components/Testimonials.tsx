@@ -36,7 +36,8 @@ export function Testimonials() {
             What Nurses <span className="text-gradient-gold">Say</span>
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-center text-muted-foreground">
-            Students and working nurses we've supported through studies, registration and career moves.
+            Students and working nurses we've supported through studies, registration and career
+            moves.
           </p>
         </Reveal>
 

@@ -295,7 +295,12 @@ export function Contact() {
                       onChange={() => clearFieldError(setErrors, "privacyConsent")}
                     />
                     <label htmlFor="privacy-consent" className="text-sm text-slate-600">
-                      I agree to the processing of my information for the purpose of responding to my enquiry. See <a href="/privacy-policy" className="underline">Privacy Policy</a>.
+                      I agree to the processing of my information for the purpose of responding to
+                      my enquiry. See{" "}
+                      <a href="/privacy-policy" className="underline">
+                        Privacy Policy
+                      </a>
+                      .
                     </label>
                   </div>
                   {errors.privacyConsent ? (

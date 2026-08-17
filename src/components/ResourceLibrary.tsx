@@ -51,8 +51,7 @@ export function ResourceLibrary() {
             Free Nursing <span className="text-gradient-gold">Study Resources</span>
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-center text-muted-foreground">
-            Unit-wise notes, MCQs & important questions — straight from our Instagram
-            classroom.
+            Unit-wise notes, MCQs & important questions — straight from our Instagram classroom.
           </p>
         </Reveal>
 
@@ -104,12 +103,7 @@ export function ResourceLibrary() {
         {/* ---- Resource grid + Load More tile ---- */}
         <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {shown.map((r, i) => (
-            <Reveal
-              key={r.id}
-              as="li"
-              delay={Math.min(i, 6) * 60}
-              className="h-full"
-            >
+            <Reveal key={r.id} as="li" delay={Math.min(i, 6) * 60} className="h-full">
               <article className="card-soft hover-lift flex h-full flex-col overflow-hidden">
                 {/* Category header strip */}
                 <div className="surface-space starfield flex min-w-0 items-center gap-2 px-5 py-3">
@@ -195,8 +189,7 @@ export function ResourceLibrary() {
                   Explore More
                 </span>
                 <span className="text-xs text-muted-foreground">
-                  Show {Math.min(PAGE_SIZE, filtered.length - visibleCount)} more
-                  resources
+                  Show {Math.min(PAGE_SIZE, filtered.length - visibleCount)} more resources
                 </span>
               </button>
             </li>

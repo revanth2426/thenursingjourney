@@ -141,7 +141,11 @@ export function Navbar() {
               aria-expanded={open}
               className="inline-flex h-11 w-11 items-center justify-center rounded-full text-primary-foreground transition-colors hover:bg-neon/15 md:hidden"
             >
-              {open ? <X className="h-6 w-6" aria-hidden /> : <Menu className="h-6 w-6" aria-hidden />}
+              {open ? (
+                <X className="h-6 w-6" aria-hidden />
+              ) : (
+                <Menu className="h-6 w-6" aria-hidden />
+              )}
             </button>
           </div>
         </nav>
