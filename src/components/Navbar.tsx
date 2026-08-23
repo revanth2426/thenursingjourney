@@ -5,7 +5,7 @@ import { Link } from "@tanstack/react-router";
 import { images } from "@/data/site-images";
 import { navLinks, wa } from "@/data/site";
 
-export function Navbar() {
+export function Navbar({ forceSolidBackground }: { forceSolidBackground?: boolean } = {}) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const drawerRef = useRef<HTMLDivElement>(null);
@@ -16,6 +16,9 @@ export function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Use forceSolidBackground for SSR if provided, otherwise use scroll state
+  const isSolid = forceSolidBackground || scrolled;
 
   // Lock body scroll + iOS rubber-band prevention when drawer is open
   useEffect(() => {
@@ -84,7 +87,7 @@ export function Navbar() {
     <>
       <header
         className={`nav-starfield fixed inset-x-0 top-0 z-50 overflow-hidden transition-colors duration-300 ${
-          scrolled ? "bg-navy-deep/95 backdrop-blur-md shadow-lg" : "bg-navy-deep/70 backdrop-blur"
+          isSolid ? "bg-navy-deep/95 backdrop-blur-md shadow-lg" : "bg-navy-deep/70 backdrop-blur"
         }`}
       >
         <nav

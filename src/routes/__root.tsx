@@ -22,6 +22,29 @@ function NotFoundComponent() {
         <p className="mt-2 text-sm text-muted-foreground">
           The page you're looking for doesn't exist or has been moved.
         </p>
+
+        {/* Agent recovery links */}
+        <div className="mt-6 rounded-lg border border-border bg-muted/50 p-4 text-left">
+          <p className="mb-2 text-sm font-semibold text-foreground">Looking for something?</p>
+          <ul className="space-y-1 text-sm">
+            <li>
+              <a href="/" className="text-primary hover:underline">
+                → Homepage
+              </a>
+            </li>
+            <li>
+              <a href="/sitemap.xml" className="text-primary hover:underline">
+                → Sitemap
+              </a>
+            </li>
+            <li>
+              <a href="/llms.txt" className="text-primary hover:underline">
+                → Agent Instructions
+              </a>
+            </li>
+          </ul>
+        </div>
+
         <div className="mt-6">
           <Link
             to="/"
@@ -74,30 +97,70 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "The Nursing Journey – Siva Naik" },
-      { name: "author", content: "Siva Naik" },
-      { property: "og:site_name", content: "The Nursing Journey – Siva Naik" },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
+  head: () => {
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      name: "The Nursing Journey – Siva Naik",
+      description: "Nursing study materials, council registration assistance, and career guidance for nursing students and professionals in India.",
+      url: "https://thenursingjourney.in/",
+      telephone: "+91-94949-59401",
+      areaServed: ["Andhra Pradesh", "Telangana"],
+      founder: {
+        "@type": "Person",
+        name: "Siva Naik",
+        jobTitle: "ICU Staff Nurse",
+        sameAs: [
+          "https://www.linkedin.com/in/siva-naik",
+          "https://twitter.com/nursing_sivanaik",
+          "https://www.instagram.com/nursing_sivanaik",
+          "https://www.youtube.com/@thenursingjourney",
+        ],
       },
-      { rel: "icon", type: "image/png", href: images.favicon.src },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap",
-      },
-    ],
-  }),
+      sameAs: [
+        "https://www.instagram.com/nursing_sivanaik",
+        "https://www.youtube.com/@thenursingjourney",
+        "https://www.threads.net/@nursing_sivanaik",
+        "https://t.me/thenursingjourney",
+      ],
+    };
+
+    return {
+      meta: [
+        { charSet: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        { title: "The Nursing Journey – Siva Naik" },
+        { name: "author", content: "Siva Naik" },
+        { name: "description", content: "Nursing study materials, council registration assistance, and career guidance for nursing students and professionals in India." },
+        { property: "og:site_name", content: "The Nursing Journey – Siva Naik" },
+        { property: "og:type", content: "website" },
+        { property: "og:title", content: "The Nursing Journey – Siva Naik" },
+        { property: "og:description", content: "Nursing study materials, council registration assistance, and career guidance for nursing students and professionals in India." },
+        { property: "og:url", content: "https://thenursingjourney.in/" },
+        { name: "twitter:card", content: "summary_large_image" },
+      ],
+      links: [
+        {
+          rel: "stylesheet",
+          href: appCss,
+        },
+        { rel: "icon", type: "image/png", href: images.favicon.src },
+        { rel: "preconnect", href: "https://fonts.googleapis.com" },
+        { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap",
+        },
+        { rel: "canonical", href: "https://thenursingjourney.in/" },
+      ],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify(jsonLd),
+        },
+      ],
+    };
+  },
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,

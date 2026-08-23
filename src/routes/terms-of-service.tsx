@@ -30,7 +30,7 @@ export const Route = createFileRoute("/terms-of-service")({
 function TermsOfService() {
   return (
     <div className="min-h-screen bg-white text-slate-900">
-      <Navbar />
+      <Navbar forceSolidBackground />
       <main className="mx-auto max-w-4xl px-4 py-12 pt-32 sm:px-6 lg:px-8">
         <h1 className="mb-6 text-3xl font-bold text-slate-900">Terms of Service</h1>
         <p className="mb-4 text-slate-600">Effective Date: August 16, 2026</p>
