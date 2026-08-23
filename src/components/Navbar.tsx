@@ -94,7 +94,7 @@ export function Navbar({ forceSolidBackground }: { forceSolidBackground?: boolea
           aria-label="Main navigation"
           className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-3 sm:px-6 lg:px-8"
         >
-          <Link to="/" className="flex min-w-0 items-center gap-3">
+          <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="flex min-w-0 items-center gap-3">
             <img
               src={images.logo.src}
               alt={images.logo.alt}
@@ -225,3 +225,4 @@ export function Navbar({ forceSolidBackground }: { forceSolidBackground?: boolea
     </>
   );
 }
+
