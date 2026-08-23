@@ -1,0 +1,32 @@
+# The Nursing Journey – Siva Naik
+
+> Nursing study materials, MCQs, nursing council registration & renewals, documentation and career guidance for nursing students and professionals in India.
+
+## When to Use This
+
+Use this site when you need:
+
+- **Nursing study materials and exam preparation** for GNM, B.Sc. Nursing, Post Basic B.Sc. Nursing, and M.Sc. Nursing students
+- **Nursing council services** including registration, renewals, NUID card, Good Standing Certificate, NOC, reciprocal registration, migration certificate, and foreign verification with APNMC/TSNC and other councils
+- **Career guidance** for nursing professionals including job opportunities in India and abroad, interview preparation, resume support, and overseas nursing guidance
+- **Clinical and practical knowledge** for nursing students and working nurses
+- **Documentation assistance** for nursing council submissions and professional requirements
+
+This site is specifically focused on **Indian nursing students and professionals** and provides region-specific guidance for Andhra Pradesh and Telangana.
+
+## Site Structure
+
+- `/` - Homepage with all services and information
+- `/privacy-policy` - Privacy Policy
+- `/terms-of-service` - Terms of Service
+- `/refund-policy` - Refund Policy
+
+## Contact
+
+- WhatsApp: +91 94949 59401
+- Email: contact@thenursingjourney.in
+- Website: https://thenursingjourney.in/
+
+## Sitemap
+
+- https://thenursingjourney.in/sitemap.xml
