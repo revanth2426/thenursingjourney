@@ -129,14 +129,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       meta: [
         { charSet: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
-        { title: "The Nursing Journey – Siva Naik" },
         { name: "author", content: "Siva Naik" },
-        { name: "description", content: "Nursing study materials, council registration assistance, and career guidance for nursing students and professionals in India." },
-        { property: "og:site_name", content: "The Nursing Journey – Siva Naik" },
         { property: "og:type", content: "website" },
-        { property: "og:title", content: "The Nursing Journey – Siva Naik" },
-        { property: "og:description", content: "Nursing study materials, council registration assistance, and career guidance for nursing students and professionals in India." },
-        { property: "og:url", content: "https://thenursingjourney.in/" },
+        { property: "og:image", content: "https://thenursingjourney.in/og-image.jpg" },
         { name: "twitter:card", content: "summary_large_image" },
       ],
       links: [
@@ -151,7 +146,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           rel: "stylesheet",
           href: "https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap",
         },
-        { rel: "canonical", href: "https://thenursingjourney.in/" },
       ],
       scripts: [
         {
