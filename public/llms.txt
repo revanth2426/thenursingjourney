@@ -16,10 +16,19 @@ This site is specifically focused on **Indian nursing students and professionals
 
 ## Site Structure
 
-- `/` - Homepage with all services and information
+- `/` - Homepage (single-page with sections: About, Services, Resources, Why Us, Contact)
 - `/privacy-policy` - Privacy Policy
 - `/terms-of-service` - Terms of Service
 - `/refund-policy` - Refund Policy
+
+## Navigation
+
+The homepage uses anchor-based navigation. Click any nav link to scroll to that section:
+- `/#about` - About Siva Naik
+- `/#services` - Nursing services overview
+- `/#resources` - Free study resources
+- `/#why-us` - Why choose us
+- `/#contact` - Contact form
 
 ## Contact
 

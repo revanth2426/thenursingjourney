@@ -75,11 +75,11 @@ export const phone = {
 // ---------------------------------------------------------------------------
 export const navLinks = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Resources", href: "/resources" },
-  { label: "Why Us", href: "/why-us" },
-  { label: "Contact", href: "/contact" },
+  { label: "About", href: "/#about" },
+  { label: "Services", href: "/#services" },
+  { label: "Resources", href: "/#resources" },
+  { label: "Why Us", href: "/#why-us" },
+  { label: "Contact", href: "/#contact" },
 ] as const;
 
 // ---------------------------------------------------------------------------
